@@ -45,6 +45,7 @@
 			$email = $_POST["email"];
 			$t = time();
 			
+  			// new comment for commit testing
 			// Insert into orders
 			// but oops query is not defined... yet
 			
