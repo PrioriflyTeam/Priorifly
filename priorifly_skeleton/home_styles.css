@@ -1,0 +1,62 @@
+body {
+	width:300px;
+}
+
+#home_img {
+	width:290px;
+	height:280px;
+	margin: 0 auto;
+	display: block;
+}
+
+#tasks_list_name {
+	text-align:center;
+	font-size:25px;
+	padding-top:0;
+	margin-top:0;
+	text-decoration:underline;
+}
+
+.tasks_header {
+	height:42px;
+}
+
+#logout_btn {
+	left: 75%;
+}
+
+#create_btn {
+	width:100px;
+	left:10%;
+}
+
+.settings_btn {
+	height:50px;
+	width:50px;
+}
+
+.about_us_title {
+	text-align:center;
+	margin-top:0;
+	font-size:25px;
+}
+
+#back_btn, #about_btn {
+	float:left;
+}
+
+#edit_btn {
+	float:right;
+}
+
+#some_btn {
+	float:left;
+}
+
+#create_btn, #edit_btn, #some_btn {
+	margin:20px 0;
+}
+
+.toolbox_img {
+	float: right;
+}
