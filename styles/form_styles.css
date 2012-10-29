@@ -1,0 +1,17 @@
+#username_field, #password_field, #first_name_field, #last_name_field, #email_field, #retype_password_field {
+	border:none;
+	padding:5px 0;
+}
+
+.ui-submit, #signup_link, #username, #password, #login_submit_btn, #retype_password, #email, #first_name, #last_name {
+	height:45px;
+	width:250px;
+	display:block;
+	margin:0 auto;
+	border-radius:2px;
+}
+
+.ui-submit {
+	padding: 0px;
+	margin: 5px auto;
+}
