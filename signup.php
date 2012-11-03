@@ -19,22 +19,10 @@
 			<div id="signup_logo_container">
 				<img id="signup_logo_img" src="images/signup_logo_1.png" alt="logo" />
 			</div>
-			<form id="signup_form" action="#" method="post" data-theme="e">
-				<!--div data-role="fieldcontain" class="ui-hide-label" id="first_name_field">
-					<label for="email">First Name:</label>
-					<input type="text" name="first_name" id="first_name" value="" placeholder="First Name"/>
-				</div>
-				<div data-role="fieldcontain" class="ui-hide-label" id="last_name_field">
-					<label for="email">Last Name:</label>
-					<input type="text" name="last_name" id="last_name" value="" placeholder="Last Name"/>
-				</div-->
+			<form id="signup_form" action="pfSignUpSubmit.php" method="post" data-theme="e">
 				<div data-role="fieldcontain" class="ui-hide-label" id="email_field">
 					<label for="email">Email:</label>
 					<input type="text" name="email" id="email" value="" placeholder="Email"/>
-				</div>
-				<div data-role="fieldcontain" class="ui-hide-label" id="username_field">
-					<label for="username">Username:</label>
-					<input type="text" name="username" id="username" value="" placeholder="Username"/>
 				</div>
 				<div data-role="fieldcontain" class="ui-hide-label" id="password_field">
 					<label for="password">Password:</label>

@@ -32,3 +32,13 @@
 	padding-top:20px;
 	border-top:1px solid white;
 }
+
+.slider_left {
+	position:relative;
+  	left:28%;
+}
+
+.slider_right {
+	position:relative;
+	left:86%;
+}

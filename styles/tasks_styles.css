@@ -1,0 +1,140 @@
+#header_home_icon {
+	float:left;
+}
+
+#header_notifications_icon {
+	float:left;
+	left:81px;
+	top:0;
+	position:absolute;
+}
+
+#header_edit_icon {
+	top:0;
+	left:163px;
+	position:absolute;
+}
+
+#header_notification_link {
+	left: 80px;	
+	top: 3px;
+}
+
+#header_create_icon {
+	float:right;
+}
+
+#header_home_icon, #header_notifications_icon, #header_create_icon, #header_edit_icon {
+	background-color:#00B4CC;
+	background-image:none;
+	font-family: 'Quicksand', sans-serif;
+	text-shadow:none;
+	font-size:25px;
+	font-weight:normal;
+	border:none;
+	text-decoration:none;
+	text-align:center;
+	width:80px;
+	height:37px;
+	border-right:1px solid black;
+}
+
+#header_home_link, #header_notification_link, #header_create_link {
+	background-color:#00B4CC;
+	background-image:none;
+	font-family: 'Quicksand', sans-serif;
+	text-shadow:none;
+	font-size:25px;
+	border:none;
+}
+
+#nav_header {
+	background-color:#008C9E;
+	background-image:none;
+	border-bottom: 4px solid #005F6B;
+	height:38px;
+}
+
+#upper_container {
+	height:100px;
+}
+
+#date {
+	position: absolute;
+	top: 50px;
+	left: 60px;
+	font-size:50px;
+	background-color:#C3FF68;
+	padding:5px 5px;
+	border-bottom:3px solid #afff35;
+	border-radius:5px;
+	font-family: 'Exo', sans-serif;
+}
+
+#fwd_btn {
+	position: absolute;
+	top: 59px;
+	left: 275px;
+}
+
+.hide_task {
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.reminder, .task {
+	font-size:25px;
+	border-top:1px solid red;
+	padding:15px 0px;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.task_description, .reminder_description {
+	font-size:15px;
+	font-family: 'Quicksand', sans-serif;
+}
+
+#tasks_reminders_container {
+	height:50px;
+}
+
+a {
+	text-decoration:none;
+}
+
+#tasks_link, #reminders_link {
+	width:50%;
+	height:50px;
+	color:white;
+	font-size:40px;
+	text-decoration:none;
+	text-align:center;
+	font-weight:normal;
+	text-shadow: none;
+	font-family: 'Quicksand', sans-serif;
+	border-top: 3px solid #005F6B;
+}
+
+#tasks_link {
+}
+
+#reminders_link {
+	position: absolute;
+	top: 0;
+	left: 160px;
+}
+
+.edit_button {
+	margin:20px auto 0 auto;
+	border-radius:4px;
+	text-align:center;
+	width:260px;
+	padding-top:10px;
+	height:40px;
+	background-color: #005F6B;
+	color: white;
+	font-family: 'Quicksand', sans-serif;
+	font-size:30px;
+}

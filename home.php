@@ -1,5 +1,6 @@
 <?php
 	include 'top_boilerplate.html';
+	session_unset(); 
 ?>
 
 
@@ -19,10 +20,9 @@
 		</div>
 		
 		<div id="login_container">
-			<form id="login_form" action="#" method="post" data-theme="e">
+			<form id="login_form" action="submit" method="post" data-theme="e">
 				<div data-role="fieldcontain" class="ui-hide-label" id="username_field">
-					<label for="username">Username:</label>
-					<input type="text" name="username" id="username" value="" placeholder="Username"/>
+					<input type="text" name="email" id="username" value="" placeholder="Email"/>
 				</div>
 				<div data-role="fieldcontain" class="ui-hide-label" id="password_field">
 					<label for="password">Password:</label>
