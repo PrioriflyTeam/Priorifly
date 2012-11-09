@@ -1,50 +1,45 @@
 <?php
-	include 'top_boilerplate.html';
-	session_unset(); 
+	session_start();
+	if (!isset($_SESSION['user_id'])) {
+		header("Location: sorry.php");
+	} else {
+		include 'top_boilerplate.html';
+	}
 ?>
 
-
-
-<div data-role="page" id="login">
+<div data-role="page" id="home">
 	<script type="text/javascript">
-		$('#login').live('pagebeforeshow',function(event, ui){
- 			//alert("login");
- 			$('body').css('background-color', '#556270');
+		$('#home').live('pagebeforeshow',function(event, ui){
+ 			$('body').css('background-color', '#FFFBDB');
+ 			$("#go_to_tasks_button").click(function() {
+ 				window.location.href = "tasks.php";
+ 			});
+ 			$("#logout_button").click(function() {
+ 				window.location.href = "logout.php";
+ 			});
+ 			$("#about_us_link").click(function() {
+ 				alert("The about us page will be created soon...");
+ 			});
+ 			$("#settings_link").click(function() {
+ 				alert("The settings page will be crated soon...");
+ 			});
 		});
 	</script>
 	<div data-role="header"></div><!-- /header -->
 
 	<div data-role="content">
-		<div id="home_logo_container">
-			<img id="home_logo" src="images/priorifly_logo.png" alt="logo" />
-		</div>
+		<h1 id="home_title">Priorifly</h1>
 		
-		<div id="login_container">
-			<form id="login_form" action="submit" method="post" data-theme="e">
-				<div data-role="fieldcontain" class="ui-hide-label" id="username_field">
-					<input type="text" name="email" id="username" value="" placeholder="Email"/>
-				</div>
-				<div data-role="fieldcontain" class="ui-hide-label" id="password_field">
-					<label for="password">Password:</label>
-					<input type="password" name="password" id="password" value="" placeholder="Password"/>
-				</div>	
-				<input id="login_submit_btn" type="submit" value="Log In" data-role="button" data-theme="e"/>			
-			</form>
-		</div>
-		
-		<div id="forgot_pword_link_container">
-			<a href="forgot_pword.php" id="forgot_pword_link">Forgot your password?</a>
-		</div>
-		
-		<div id="signup_link_container">
-			<a id="signup_link" href="signup.php" data-role="button" data-theme="b" data-inline="true">Sign Up</a>
-		</div>
+		<div id="go_to_tasks_button">My Tasks</div>
+		<div id="logout_button">Logout</div>
+		<p id="about_us_link">About Us</p>
+		<p id="settings_link">Settings</p>
 		
 	</div><! -- /content -->
 	
 	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false"></div>
 
-</div> <!-- /login -->
+</div> <!-- /home -->
 
 <?php
 	include 'bottom_boilerplate.html';

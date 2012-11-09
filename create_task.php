@@ -1,6 +1,10 @@
 <?php
 	session_start();
-	include 'top_boilerplate.html';
+	if (!isset($_SESSION['user_id'])) {
+		header("Location: sorry.php");
+	} else {
+		include 'top_boilerplate.html';
+	}
 ?>
 <div data-role="page" id="create_page">
 	<div data-role="header" class="home_header">
@@ -8,12 +12,6 @@
 	</div><!-- /header -->
 
 	<div data-role="content">	
-		<?php
-			$var = $_SESSION['user_id'];
-			$test = $_SESSION['test'];
-			//echo "<p>TEST: ".$test."</p>";
-			//echo "<p>Session ID: ".$var."</p>";
-		?>
 		<form action="pfTaskSubmit.php" method="post" id="create_form">
 			<div data-role="fieldcontain" id="create_title">
     			<label for="title">Name</label>
@@ -38,16 +36,14 @@
                 <input type="range" name="progress" id="progress" value="0" min="0" max="100" data-highlight="true" />
                 <span class="slider_left">0</span>
                 <span class="slider_right">100</span>
-</div>
+			</div>
             <div data-role="fieldcontain">
                 <label for="number">Time Estimate in Hours</label>
                 <input type="number" name="hours" id="number">
             </div>
 			<p><a href="tasks.php" data-role="button" id="login_show_btn">Cancel</a></p>
 			<input type="submit" value="Save" id="save_btn">	
-		</form>
-		
-		
+		</form>		
 	</div><!-- /content -->
 	
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
@@ -55,9 +51,7 @@
 </div>
 
 	<script type="text/javascript">
-		
 		$('#create_page').live( 'pageinit',function(event){
-			);
 		});
 	</script>
 	

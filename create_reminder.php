@@ -1,7 +1,11 @@
 <?php
-	include 'top_boilerplate.html';
+	session_start();
+	if (!isset($_SESSION['user_id'])) {
+		header("Location: sorry.php");
+	} else {
+		include 'top_boilerplate.html';
+	}
 ?>
-
 <div data-role="page" id="create_page">
 	<div data-role="header" class="home_header">
 		<h1>Create Reminder</h1>

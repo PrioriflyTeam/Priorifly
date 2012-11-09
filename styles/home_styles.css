@@ -42,3 +42,54 @@
 	position:relative;
 	left:86%;
 }
+
+#home_title {
+	font-family: 'Quicksand', sans-serif;
+	color:black;
+	font-size:60px;
+	text-align:center;
+	font-weight:normal;
+	margin:0;
+	padding-bottom:20px;
+}
+
+#go_to_tasks_button {
+	text-align: center;
+	width: 220px;
+	border-radius: 5px;
+	height: 38px;
+	padding: 20px;
+	background-color: #48A8D8;
+	margin: 0 auto;
+	color: white;
+	font-size:30px;
+	font-family: 'Quicksand', sans-serif;
+}
+
+#logout_button {
+	text-align: center;
+	width: 180px;
+	border-radius: 5px;
+	padding: 8px 0;
+	background-color: #FA4E5D;
+	margin: 40px auto 0 auto;
+	color: white;
+	font-size:20px;
+	font-family: 'Quicksand', sans-serif;
+}
+
+#about_us_link, #settings_link {
+	font-size:25px;
+}
+
+#about_us_link {
+	float:left;
+	position:absolute;
+	top:330px;
+}
+
+#settings_link {
+	position:absolute;
+	top:330px;
+	left:210px;
+}

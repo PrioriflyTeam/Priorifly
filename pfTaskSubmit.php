@@ -2,7 +2,7 @@
 session_start();
 $Name = $_POST["name"];
 $Notes = $_POST["description"];
-$Deadline = $$_POST["deadline"];
+$Deadline = $_POST["deadline"];
 $Rank = $_POST["rank"];
 $Progress = $_POST["progress"];
 $Total_Time = $_POST["Hours"];
