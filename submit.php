@@ -19,9 +19,9 @@ elseif (empty($email) || empty($password)) {
 			 $_SESSION['user_id'] = $row['User_ID'];
 			 $_SESSION['test'] = "test";
 		}
-		header("Location: http://stanford.edu/~scottk92/cgi-bin/priorifly_2/tasks.php");
+		header("Location: http://stanford.edu/~stguo/cgi-bin/priorifly/tasks.php");
 	} else {
-		header("Location: http://stanford.edu/~scottk92/cgi-bin/priorifly_2/sorry.php");
+		header("Location: http://stanford.edu/~stguo/cgi-bin/priorifly/sorry.php");
 	}
 }
 ?> 

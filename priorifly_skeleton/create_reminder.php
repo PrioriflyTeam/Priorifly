@@ -1,6 +1,23 @@
-<?php
-	include 'top_boilerplate.html';
-?>
+<!DOCTYPE html> 
+<html>
+
+<head>
+	<title>Priorifly</title> 
+	<meta charset="utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+ 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+	<link rel="stylesheet" href="jquery.mobile-1.2.0.css" />
+
+	<link rel="stylesheet" href="home_styles.css" />
+	
+	<script src="jquery-1.8.2.min.js"></script>
+	<script src="jquery.mobile-1.2.0.js"></script>
+</head> 
+
+	
+<body> 
 
 <div data-role="page" id="create_page">
 	<div data-role="header" class="home_header">
@@ -18,7 +35,7 @@
                 <label for="textarea">Description</label>
                 <textarea name="description" id="textarea"></textarea>
             </div>
-			<a href="#cancelpage" data-role="button" data-rel="dialog" id="login_show_btn">Cancel</a><div data-role="popup" id="cancelpopup"></div>
+			<p><a href="tasks.php" data-role="button" id="login_show_btn">Cancel</a></p>
 			<input type="submit" value="Save" id="save_btn">	
 		</form>
 		
@@ -27,6 +44,7 @@
 	
 	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
 	</div>
+</div>
 
 	<script type="text/javascript">
 		
@@ -34,18 +52,7 @@
 			);
 		});
 	</script>
-
+	
 </div>
-
-<div data-role="page" id="cancelpage" data-title="Are you sure you want to cancel?">
-<div data-role="header" class="home_header">
-<h1>Cancel</h1>
-</div><!-- /header -->
-<h3>Are you sure you want to leave this page? Any changes you have made to this page will not be saved.</h3>
-<div data-role="content">
-<a href="reminders.php" data-role="button">Leave</a>
-<a href="#create_page" data-role="button">Stay on this page</a>
-
-<?php
-	include 'bottom_boilerplate.html';
-?>
+</body>
+</html>

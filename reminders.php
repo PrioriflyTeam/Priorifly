@@ -45,7 +45,7 @@
 			<?php
 				include("pfConfig.php"); //put Alejandro's config file here
 				$User_ID = $_SESSION['user_id'];
-				$query = sprintf("SELECT * FROM Reminders WHERE User_ID = '$User_ID'"); //put query here
+				$query = sprintf("SELECT * FROM Reminders WHERE User_ID = '$User_ID' and Status = 2"); //put query here
 				$result = mysql_query($query);
 				$count = 0;
 				

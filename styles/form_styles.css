@@ -15,3 +15,9 @@
 	padding: 0px;
 	margin: 5px auto;
 }
+
+.ui-icon-trash {
+	background-image: url("trash-icon.png");
+	position:relative;
+	left:86%;
+}
