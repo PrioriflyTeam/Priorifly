@@ -1,3 +1,9 @@
+/*
+ * ---------------------------------------------------------------------------------------
+ * HEADER STYLES
+ * ---------------------------------------------------------------------------------------
+ */
+ 
 #nav_header {
 	background-image: linear-gradient(bottom, #F04155 48%, #F36576 74%);
 	background-image: -o-linear-gradient(bottom, #F04155 48%, #F36576 74%);
@@ -24,8 +30,14 @@
 	left:270px;
 }
 
+/*
+ * ---------------------------------------------------------------------------------------
+ * FILTER CONTAINER STYLES (buttons above tasks section)
+ * ---------------------------------------------------------------------------------------
+ */
+
 .filter_container {
-	min-height:120px;
+	min-height:75px;
 }
 
 .btn_name {
@@ -33,37 +45,87 @@
 	font-weight:normal;
 	text-shadow:none;
 	color:white;
-	font-size:20px;
+	font-size:15px;
 }
 
-#prioritize_btn, #sort_btn {
+#prioritize_btn, #sort_btn, #reorder_btn {
 	border-radius:4px;
 	text-align:center;
-	width:100px;
+	width:80px;
 	padding:15px 0;
-	background-color: #1bc0c6;
-	border-bottom: 4px solid #0d5c5e;
-	margin-left:15px;
+	background-color: #D1026C;
+	border-bottom: 4px solid #9e0252;
 	position:absolute;
-	top:80px;
+	top:60px;
 }
 
 #prioritize_btn {
-	background-color: #c0c61b;
-	border-color:#9ea416;
+	background-color: #F2D43F;
+	border-color:#eec910;
 	margin-left:0;
-	left: 185px;
+	left: 120px;
 }
 
-.hide_task, .hide_reminder {
+
+#sort_btn {
+	left:225px;
+	background-color:#492D61;
+	border-color:#2f1d3e;
+}
+
+
+/*
+ * ---------------------------------------------------------------------------------------
+ * FILTER STYLES
+ * ---------------------------------------------------------------------------------------
+ */
+
+
+#sorting_options_container {
+	position: absolute;
+	top: 52px;
+	left: 224px;
+	width: 79px;
+	font-size: 12px;
+	background-color:#ebebeb;
+	border-radius:0px;
+	border:1px solid #5B9DC4;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.sort_option {
+	border-bottom:1px solid #5B9DC4;
+	padding:10px 0;
+	padding-left:3px;
+	margin:0;
+	font-weight:normal;
+	text-shadow:none;
+}
+
+.last_option {
+	border-width:0px;
+}
+
+.selected_option {
+	background-color:#d2bfe1;
+	color:white;
+}
+
+/*
+ * ---------------------------------------------------------------------------------------
+ * TASK STYLES (buttons above tasks section)
+ * ---------------------------------------------------------------------------------------
+ */
+
+.hide_task {
 	white-space: nowrap;
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-.reminder, .task, .completed_task {
-	font-size:25px;
+.task, .completed_task {
+	font-size:20px;
 	border-top:1px solid red;
 	padding:15px 0px;
 	font-family: 'Quicksand', sans-serif;
@@ -74,10 +136,32 @@
 	border-color:#95CFB7;
 }
 
-.task_description, .reminder_description {
+.task_description {
 	font-size:15px;
 	font-family: 'Quicksand', sans-serif;
 }
+
+.edit_button {
+	margin:20px auto 0 auto;
+	border-radius:4px;
+	text-align:center;
+	width:252px;
+	padding-top:10px;
+	height:40px;
+	background-color: #FF823A;
+	border-bottom: 3px solid #C34700;
+	color: white;
+	font-family: 'Quicksand', sans-serif;
+	font-size:30px;
+}
+
+
+
+/*
+ * ---------------------------------------------------------------------------------------
+ * FOOTER STYLES (create button section)
+ * ---------------------------------------------------------------------------------------
+ */
 
 a {
 	text-decoration:none;
@@ -93,25 +177,8 @@ a {
 	/*border-bottom: 8px solid #ae0e20;*/
 }
 
-
-
-.reminder_btn_img {
-	margin-bottom:4px;
-}
-
 #footer {
 	visibility:hidden;
-}
-
-.btn_img {
-	margin-top:5px;
-}
-
-.tasks_plus_btn {
-	width: 15px;
-	height: 15px;
-	margin-bottom: 13px;
-	/*margin-left: -5px;*/
 }
 
 #tasks_reminders_container {
@@ -145,6 +212,12 @@ a {
 	top:-1px;
 }
 
+/*
+ * ---------------------------------------------------------------------------------------
+ * Mobile Slider
+ * ---------------------------------------------------------------------------------------
+ */
+
 div.ui-slider {
 	margin: 0 2% 15px 20px;
 	width: 87%;
@@ -156,57 +229,5 @@ input.ui-slider-input, .ui-field-contain input.ui-slider-input {
 	text-align:center;
 }
 
-.edit_button {
-	margin:20px auto 0 auto;
-	border-radius:4px;
-	text-align:center;
-	width:252px;
-	padding-top:10px;
-	height:40px;
-	background-color: #FF823A;
-	border-bottom: 3px solid #C34700;
-	color: white;
-	font-family: 'Quicksand', sans-serif;
-	font-size:30px;
-}
 
-#sorting_options_container {
-	position: absolute;
-	top: 56px;
-	left: 185px;
-	width: 100px;
-	font-size: 15px;
-	background-color:#ebebeb;
-	border-radius:0px;
-	border:1px solid #5B9DC4;
-	font-family: 'Quicksand', sans-serif;
-	font-size:15px;
-}
 
-.sort_option {
-	border-bottom:1px solid #5B9DC4;
-	padding:8px 0;
-	padding-left:3px;
-	margin:0;
-	font-weight:normal;
-	text-shadow:none;
-}
-
-.last_option {
-	border-width:0px;
-	/*background-color:#5B9DC4;*/
-}
-
-.selected_option {
-	background-color:#5B9DC4;
-	color:white;
-}
-
-#response {
-	border:1px solid black;
-	font-family: 'Quicksand', sans-serif;
-	margin:10px auto;
-	text-align:center;
-	width:200px;
-	height:100px;
-}
