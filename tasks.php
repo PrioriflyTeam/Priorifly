@@ -1,13 +1,13 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['user_id'])) {
-		header("Location: sorry.php");
+		header("Location: index.php");
 	} else {
 		include 'top_boilerplate.html';
 	}
 ?>
 
-<div data-role="page" id="tasks">
+<div data-role="page" class="tasks_page">
 	<!--script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script-->
 	<script src="jquery-ui-1.9.1.custom.js"></script>
 	<script src="jquery-ui-1.9.1.custom.min.js"></script>
@@ -16,6 +16,8 @@
 		
 		var active_task = null;
 		var custom_mode = false;
+		var filter_mode_on = false;
+		var default_filter_mode = true;
 		
 		function initialize_bottom_buttons() {
 			$("#tasks_link").removeClass('inactive_link');
@@ -55,7 +57,7 @@
  			});
  			
  			$(".edit_button").click(function(){
-				window.location.replace("create_task.php?task_id=" + $(this).attr('id'));
+				window.location.replace("edit_task.php?task_id=" + $(this).attr('id'));
 			});
 		}
 		
@@ -78,7 +80,22 @@
    				success: function (response) {
     				$("#task_container").append(response);
     				initialize_tasks();
-    				$("#tasks").trigger('create');
+    				$(".tasks_page").trigger('create');
+    				$(".submit").click(function() {
+    					var id = parseInt($($($($(this)).parent()).parent()).children()[0].value);
+						var progress = parseInt($($($($(this)).parent()).parent()).children()[1].value);
+						$.ajax({
+							url: 'pfEditTask.php',
+							type: 'POST',
+							data: {progress: progress, id:id},
+							success: function() {
+								alert("Alright, your progress was updated!");
+							}
+						});
+					});
+					$(".task").swiperight(function() {
+   						alert($(this).attr('id'));
+					});
   				}
 			});
 		}
@@ -87,16 +104,16 @@
 			$.ajax({
    				url: 'filters/completed_tasks.php',
    				success: function (response) {
-    				$("#task_container").append(response);
-    				$("#tasks").trigger('create');
+    				$("#completed_task_container").append(response);
+    				$(".tasks_page").trigger('create');
+    				$(".task_description").hide();
   				}
 			});
 		}
 		
 		function initialize_sort_button() {
 			$("#sorting_options_container").hide();
-			var filter_mode_on = false;
-			var default_filter_mode = true;
+			
 			$("#sort_btn").click(function() {
 				if (!filter_mode_on) {
 					$("#sorting_options_container").slideDown('slow');
@@ -144,6 +161,20 @@
 			});
 		}
 		
+		function initialize_prioritize() {
+			$("#prioritize_btn").click(function() {
+				if (!default_filter_mode) {
+						filter('default_filter.php');
+						$(".sort_option").removeClass('selected_option');
+						$('#task_container').sortable('disable');
+						default_filter_mode = true;
+						custom_mode = false;
+				}
+				filter('default_filter.php');
+				
+			});	
+		}
+		
 		function initialize_drag_and_drop() {
 			$( "#task_container" ).sortable();
 			$("#task_container").sortable('disable');
@@ -162,14 +193,23 @@
 				}
 			});
 		}
+		
 	
-		$('#tasks').live('pageinit',function(event, ui){
+		$('.tasks_page').live('pageinit',function(event, ui){
+			
 			$('body').css('background-color', 'white');
+			get_completed_tasks();
 			initialize_bottom_buttons();
 			filter('default_filter.php');
 			initialize_sort_button();
+			initialize_prioritize();
 			initialize_drag_and_drop();
-			get_completed_tasks();
+			$("#tasks_link").attr('href', '');
+			$("#tasks_link").click(function(e) {
+				e.preventDefault();
+				window.location.replace("create_task.php");
+			});
+			
 		});
 	</script>
 	
@@ -181,7 +221,6 @@
 		<div class="filter_container">
 			<!--div><img src="images/priorifly_icons/64-zap.png" alt="zap" /></div-->
 			<div id="prioritize_btn">
-				
 				<div class="btn_name">Prioritize</div>
 			</div>
 			<div id="sort_btn">
@@ -196,6 +235,7 @@
 		</div>
 		<div id="task_container"></div>
 		<div id="completed_task_container"></div>
+		<div id="deleted_task_container"></div>
 	</div><! -- /content -->
 	
 	<?php

@@ -59,7 +59,8 @@
 	border-radius: 5px;
 	height: 38px;
 	padding: 20px;
-	background-color: #48A8D8;
+	background-color: #C0C61B;
+	border-bottom:3px solid #9EA416;
 	margin: 0 auto;
 	color: white;
 	font-size:30px;
@@ -71,7 +72,8 @@
 	width: 180px;
 	border-radius: 5px;
 	padding: 8px 0;
-	background-color: #FA4E5D;
+	background-color: #1BC0C6;
+	border-bottom:3px solid #0D5C5E;
 	margin: 40px auto 0 auto;
 	color: white;
 	font-size:20px;
@@ -92,4 +94,10 @@
 	position:absolute;
 	top:330px;
 	left:210px;
+}
+
+.small_logo {
+	text-align:center;
+	font-family: 'Quicksand', sans-serif;
+	font-size:25px;
 }

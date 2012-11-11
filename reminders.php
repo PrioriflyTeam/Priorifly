@@ -1,15 +1,18 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['user_id'])) {
-		header("Location: sorry.php");
+		header("Location: index.php");
 	} else {
 		include 'top_boilerplate.html';
 	}
 ?>
 
 <div data-role="page" id="reminders">
+	<script src="jquery-ui-1.9.1.custom.js"></script>
+	<script src="jquery-ui-1.9.1.custom.min.js"></script>
+	<script src="jquery.ui.touch-punch.min.js"></script>
 	<script type="text/javascript">
-		$('#reminders').live('pageinit',function(event, ui){
+		function initialize_reminders() {
 			$("#header_text").text("Reminders");
 			$('.reminder_description').hide();
 			$("#reminders_link").removeClass('inactive_link');
@@ -19,7 +22,6 @@
  			
  			$(".tasks_plus_btn").hide();
  			$(".reminders_plus_btn").show();
-			
  			
  			$('body').css('background-color', 'white');
  			
@@ -34,10 +36,7 @@
  				$($(".reminder")[i]).css('border-color', color);
  			}
  			
- 			
- 			
  			var active_reminder = null;
- 			
  			$(".reminder").click(function(){
  			
  				if (active_reminder != null && $(this).attr('id') === active_reminder.attr('id')) {
@@ -60,8 +59,30 @@
  			});
  			
  			$(".edit_button").click(function(){
-			
-			window.location.replace("create_reminder.php");
+ 				var id = $(this).attr('id');
+				window.location.replace("edit_reminder.php?reminder_id=" + id);//FIX
+			});
+		}
+	
+		$('#reminders').live('pageinit',function(event, ui){
+			initialize_reminders();
+			$('#reminder_container').sortable();
+			$('#reminder_container').sortable().bind('sortupdate', function() {
+    			for (var i=0; i < $("#reminder_container").children().length; i++) {
+   		 			var id = parseInt($($("#reminder_container").children()[i]).attr('id'));
+   		 			var order = i + 1;
+   		 			$.ajax({
+   						url: 'update_user_reminder_order',
+   						type: 'POST',
+   						data: {"id":id, "order":order},
+   						success: function () {console.log("fun");}
+					});
+				}
+			});
+			$("#reminders_link").attr('href', '');
+			$("#reminders_link").click(function(e) {
+				e.preventDefault();
+				window.location.replace("create_reminder.php");
 			});
 		});
 	</script>
@@ -74,7 +95,7 @@
 			<?php
 				include("pfConfig.php");
 				$User_ID = $_SESSION['user_id'];
-				$query = sprintf("SELECT * FROM Reminders WHERE User_ID = '$User_ID'");
+				$query = sprintf("SELECT * FROM Reminders WHERE User_ID = '$User_ID' ORDER BY User_Priority");
 				$result = mysql_query($query);
 				$count = 0;
 				
@@ -83,7 +104,7 @@
 						$reminder["Name"].
 						"<div class='reminder_description'>".
 							$reminder["Notes"].
-							"<div class='edit_button'>Edit Reminder</div>".
+							"<div class='edit_button' id='".$reminder["Reminder_ID"]."'>Edit Reminder</div>".
 						"</div>".
 					"</div>";
 				}

@@ -19,7 +19,7 @@
 			<div id="fgt_pword_logo_container">
 				<img id="fgt_pword_logo_img" src="images/fgt_pword_logo_1.png" alt="logo" />
 			</div>
-			<form id="fgt_pword_form" action="#" method="post" data-theme="e">
+			<form id="fgt_pword_form" action="fgt_pword_submit.php" method="post" data-theme="e">
 				<div data-role="fieldcontain" class="ui-hide-label" id="email_field">
 					<label for="email">Email:</label>
 					<input type="text" name="email" id="email" value="" placeholder="Email"/>

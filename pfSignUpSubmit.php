@@ -16,11 +16,12 @@ $Creation_Date = date('Y/m/d H:i:s', time());
 //$User_Priority = 
 
 $Active = 1;
+$Salt = 0;
 
 
 include("pfConfig.php");
 //Currently where 10 is we should grab User_ID from sessions cookie
-$query = "insert into Users values (NULL,'$Creation_Date', '$Email', 'First_Name', 'Last_Name', '$Password1', '$Password2',  '$Active')";
+$query = "insert into Users values (NULL,'$Creation_Date', '$Email', '$Password1', '$Salt', '$Active')";
 $result = mysql_query($query);
 
 ?>

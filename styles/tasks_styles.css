@@ -62,15 +62,16 @@
 	text-overflow: ellipsis;
 }
 
-.reminder, .task, .completed_tasks {
+.reminder, .task, .completed_task {
 	font-size:25px;
 	border-top:1px solid red;
 	padding:15px 0px;
 	font-family: 'Quicksand', sans-serif;
 }
 
-.completed_tasks {
-	color:#898989;
+.completed_task {
+	color:#95CFB7;
+	border-color:#95CFB7;
 }
 
 .task_description, .reminder_description {
@@ -78,27 +79,21 @@
 	font-family: 'Quicksand', sans-serif;
 }
 
-#tasks_reminders_container {
-	height:50px;
-}
-
 a {
 	text-decoration:none;
 }
 
 .active_link {
-	background-color:#ff823a;
-	border-bottom:8px solid #c34700;
+	/*background-color: #F04155;*/
+	background-image: linear-gradient(bottom, #F04155 48%, #F36576 74%);
+	background-image: -o-linear-gradient(bottom, #F04155 48%, #F36576 74%);
+	background-image: -moz-linear-gradient(bottom, #F04155 48%, #F36576 74%);
+	background-image: -webkit-linear-gradient(bottom, #F04155 48%, #F36576 74%);
+	background-image: -ms-linear-gradient(bottom, #F04155 48%, #F36576 74%);
+	/*border-bottom: 8px solid #ae0e20;*/
 }
 
-.inactive_link {
-	background-color:#95CFB7;
-	border-bottom:15px solid #326e55;
-}
 
-.btn_img {
-	margin-bottom:3px;
-}
 
 .reminder_btn_img {
 	margin-bottom:4px;
@@ -108,44 +103,68 @@ a {
 	visibility:hidden;
 }
 
-.tasks_plus_btn, .reminders_plus_btn {
-	width: 15px;
-	height: 15px;
-	margin-bottom: 18px;
-	margin-left: -8px;
+.btn_img {
+	margin-top:5px;
 }
 
-#tasks_link, #reminders_link {
-	visibility:visible;
-	border-radius:4px;
-	width:50%;
+.tasks_plus_btn {
+	width: 15px;
+	height: 15px;
+	margin-bottom: 13px;
+	/*margin-left: -5px;*/
+}
+
+#tasks_reminders_container {
 	height:45px;
-	color:white;
-	font-size:40px;
-	text-decoration:none;
-	text-align:center;
-	font-weight:normal;
-	text-shadow: none;
-	font-family: 'Quicksand', sans-serif;
 }
 
 #tasks_link {
+	visibility:visible;
+	width:100%;
+	height:50px;
+	margin:0 auto;
+	text-align:center;
 }
 
-#reminders_link {
-	position: absolute;
-	top: 0;
-	left: 160px;
+.create_task_text {
+	background-color: #d21127;
+	border-bottom:3px solid #ae0e20;
+	border-radius:4px;
+	color:white;
+	font-size:25px;
+	text-decoration:none;
+	font-weight:normal;
+	text-shadow: none;
+	text-transform:uppercase;
+	font-family: 'Quicksand', sans-serif;
+	margin-top:8px;
+	width:100px;
+	padding:0px 20px;
+	position:absolute;
+	left:28%;
+	top:-1px;
+}
+
+div.ui-slider {
+	margin: 0 2% 15px 20px;
+	width: 87%;
+}
+
+input.ui-slider-input, .ui-field-contain input.ui-slider-input {
+	display:block;
+	margin: 8px auto;
+	text-align:center;
 }
 
 .edit_button {
 	margin:20px auto 0 auto;
 	border-radius:4px;
 	text-align:center;
-	width:260px;
+	width:252px;
 	padding-top:10px;
 	height:40px;
-	background-color: #005F6B;
+	background-color: #FF823A;
+	border-bottom: 3px solid #C34700;
 	color: white;
 	font-family: 'Quicksand', sans-serif;
 	font-size:30px;
