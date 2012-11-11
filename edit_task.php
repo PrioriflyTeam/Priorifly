@@ -4,9 +4,9 @@
     ?>
 
 <div data-role="page" id="create_page">
-<div data-role="header" class="home_header">
-<h1>Edit Task</h1>
-</div><!-- /header -->
+<?php
+    include 'header.html';
+    ?>
 
 <div data-role="content">
 
@@ -25,6 +25,10 @@
     $description = $task["Notes"];
     $datetimeobj = new DateTime($task["Deadline"]);
     $deadline = date_format($datetimeobj, 'F d\, g:ia');
+    if (is_string($deadline))
+        echo "is string works";
+    if (is_string($datetimeobj))
+        echo "it doesn't work";
     //$deadline = 'Nov 10, 2012 7:40 AM';
     //$deadline = '2012-11-08 23:59:59';
     $rank = $task["Rank"];
@@ -68,9 +72,9 @@
 <?php echo "<input type='hidden' name='task_id' value='".$Task_ID."'";?>
 </div>
 
-
-<a href="#cancelpage" data-role="button" data-rel="dialog" id="login_show_btn">Cancel</a><div data-role="popup" id="cancelpopup"></div>
 <input type="submit" value="Save" id="save_btn">
+<a href="#cancelpage" data-role="button" data-rel="dialog" id="login_show_btn">Cancel</a><div data-role="popup" id="cancelpopup"></div>
+
 </form>
 
 
@@ -83,6 +87,7 @@
 <script type="text/javascript">
 
 $('#create_page').live('pageinit',function(event) {
+                       $("#header_text").text("Edit Task");
                        $(document).ready(function(){
                        $('#deadline').click(function() {
                                             $('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
