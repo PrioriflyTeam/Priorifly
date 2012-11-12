@@ -42,8 +42,11 @@
 		function reorder_button(on) {
 			if (on) {
 				$("#reorder_btn").css('background-color', '#d1026c');
+				$("#reorder_btn").css('border-color', '#9e0252');
 			} else {
-				$("#reorder_btn").css('background-color', '#fd4ba6');
+				$("#reorder_btn").css('background-color', '#fec0e0');
+				$("#reorder_btn").css('border-color', '#fd4ba6');
+				$("#task_container").sortable('disable');
 			}
 			custom_reorder_mode = on;
 		}
@@ -70,6 +73,7 @@
 			
 			$("#reorder_btn").click(function() {
 				if (!custom_reorder_mode) $("#task_container").sortable('enable');
+				filter('custom_filter.php');
 				reorder_button(true);
 				prioritize_button(false);
 				filter_button(false);
@@ -88,8 +92,10 @@
 		function prioritize_button(on) {
 			if (on) {
 				$("#prioritize_btn").css('background-color', '#f2d43f');
+				$("#prioritize_btn").css('border-color', '#eec910');
 			} else {
-				$("#prioritize_btn").css('background-color', '#f7e488');
+				$("#prioritize_btn").css('background-color', '#fcf5d2');
+				$("#prioritize_btn").css('border-color', '#f2d43f');
 			}
 			prioritize_mode = on;
 		}
@@ -97,7 +103,7 @@
 		function initialize_prioritize() {
 			$("#prioritize_btn").click(function() {
 				if (!prioritize_mode) filter('default_filter.php');
-				prioritize_mode(true);
+				prioritize_button(true);
 				reorder_button(false);
 				filter_button(false);
 				//turn off all the other buttons
@@ -114,8 +120,10 @@
 		function filter_button(on) {
 			if (on) {
 				$('#sort_btn').css('background-color', '#492D61');
+				$('#sort_btn').css('border-color', '#2f1d3e');
 			} else {
-				$('#sort_btn').css('background-color', '#8554b0');
+				$('#sort_btn').css('background-color', '#e5daee');
+				$('#sort_btn').css('border-color', '#ab8ac9');
 				if ($("#sorting_options_container").css('display') != 'none') {
 					$("#sorting_options_container").slideUp('slow');
 				}
@@ -174,7 +182,19 @@
 		
 		function initialize_swipe_right() {
 			$(".task").swiperight(function() {
-   				alert($(this).attr('id'));
+				var id = $(this).attr('id');
+				var task = $(this);
+				var task_name_length = $(this).text().length - $(this).children().text().length;
+				var task_name = $(this).text().substring(0, task_name_length);
+   				$.ajax({
+					url: 'pfDeleteTask.php',
+					type: 'POST',
+					data: {"id":id},
+					success: function() {
+						alert("Cool, task '" + task_name + "' is now deleted.");
+						$(task).fadeOut('slow');
+					}
+				});
 			});
 		}
 		
