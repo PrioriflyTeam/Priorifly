@@ -1,9 +1,3 @@
-/*
- * ---------------------------------------------------------------------------------------
- * HEADER STYLES
- * ---------------------------------------------------------------------------------------
- */
- 
 #nav_header {
 	background-image: linear-gradient(bottom, #F04155 48%, #F36576 74%);
 	background-image: -o-linear-gradient(bottom, #F04155 48%, #F36576 74%);
@@ -30,14 +24,8 @@
 	left:270px;
 }
 
-/*
- * ---------------------------------------------------------------------------------------
- * FILTER CONTAINER STYLES (buttons above tasks section)
- * ---------------------------------------------------------------------------------------
- */
-
 .filter_container {
-	min-height:75px;
+	min-height:120px;
 }
 
 .btn_name {
@@ -45,87 +33,37 @@
 	font-weight:normal;
 	text-shadow:none;
 	color:white;
-	font-size:15px;
+	font-size:20px;
 }
 
-#prioritize_btn, #sort_btn, #reorder_btn {
+#prioritize_btn, #sort_btn {
 	border-radius:4px;
 	text-align:center;
-	width:80px;
+	width:100px;
 	padding:15px 0;
-	background-color: #D1026C;
-	border-bottom: 4px solid #9e0252;
+	background-color: #1bc0c6;
+	border-bottom: 4px solid #0d5c5e;
+	margin-left:15px;
 	position:absolute;
-	top:60px;
+	top:80px;
 }
 
 #prioritize_btn {
-	background-color: #F2D43F;
-	border-color:#eec910;
+	background-color: #c0c61b;
+	border-color:#9ea416;
 	margin-left:0;
-	left: 120px;
+	left: 185px;
 }
 
-
-#sort_btn {
-	left:225px;
-	background-color:#492D61;
-	border-color:#2f1d3e;
-}
-
-
-/*
- * ---------------------------------------------------------------------------------------
- * FILTER STYLES
- * ---------------------------------------------------------------------------------------
- */
-
-
-#sorting_options_container {
-	position: absolute;
-	top: 52px;
-	left: 224px;
-	width: 79px;
-	font-size: 12px;
-	background-color:#ebebeb;
-	border-radius:0px;
-	border:1px solid #5B9DC4;
-	font-family: 'Quicksand', sans-serif;
-}
-
-.sort_option {
-	border-bottom:1px solid #5B9DC4;
-	padding:10px 0;
-	padding-left:3px;
-	margin:0;
-	font-weight:normal;
-	text-shadow:none;
-}
-
-.last_option {
-	border-width:0px;
-}
-
-.selected_option {
-	background-color:#d2bfe1;
-	color:white;
-}
-
-/*
- * ---------------------------------------------------------------------------------------
- * TASK STYLES (buttons above tasks section)
- * ---------------------------------------------------------------------------------------
- */
-
-.hide_task {
+.hide_task, .hide_reminder {
 	white-space: nowrap;
 	width: 100%;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
-.task, .completed_task {
-	font-size:20px;
+.reminder, .task, .completed_task {
+	font-size:25px;
 	border-top:1px solid red;
 	padding:15px 0px;
 	font-family: 'Quicksand', sans-serif;
@@ -136,9 +74,80 @@
 	border-color:#95CFB7;
 }
 
-.task_description {
+.task_description, .reminder_description {
 	font-size:15px;
 	font-family: 'Quicksand', sans-serif;
+}
+
+#tasks_reminders_container {
+	height:50px;
+}
+
+a {
+	text-decoration:none;
+}
+
+.active_link {
+	background-color:#ff823a;
+	border-bottom:8px solid #c34700;
+}
+
+.inactive_link {
+	background-color:#95CFB7;
+	border-bottom:15px solid #326e55;
+}
+
+.btn_img {
+	margin-bottom:3px;
+}
+
+.reminder_btn_img {
+	margin-bottom:4px;
+}
+
+#footer {
+	visibility:hidden;
+}
+
+.tasks_plus_btn, .reminders_plus_btn {
+	width: 15px;
+	height: 15px;
+	margin-bottom: 18px;
+	margin-left: -8px;
+}
+
+#tasks_link, #reminders_link {
+	visibility:visible;
+	border-radius:4px;
+	width:50%;
+	height:45px;
+	color:white;
+	font-size:40px;
+	text-decoration:none;
+	text-align:center;
+	font-weight:normal;
+	text-shadow: none;
+	font-family: 'Quicksand', sans-serif;
+}
+
+#tasks_link {
+}
+
+#reminders_link {
+	position: absolute;
+	top: 0;
+	left: 160px;
+}
+
+div.ui-slider {
+	margin: 0 2% 15px 20px;
+	width: 87%;
+}
+
+input.ui-slider-input, .ui-field-contain input.ui-slider-input {
+	display:block;
+	margin: 8px auto;
+	text-align:center;
 }
 
 .edit_button {
@@ -155,79 +164,43 @@
 	font-size:30px;
 }
 
-
-
-/*
- * ---------------------------------------------------------------------------------------
- * FOOTER STYLES (create button section)
- * ---------------------------------------------------------------------------------------
- */
-
-a {
-	text-decoration:none;
-}
-
-.active_link {
-	/*background-color: #F04155;*/
-	background-image: linear-gradient(bottom, #F04155 48%, #F36576 74%);
-	background-image: -o-linear-gradient(bottom, #F04155 48%, #F36576 74%);
-	background-image: -moz-linear-gradient(bottom, #F04155 48%, #F36576 74%);
-	background-image: -webkit-linear-gradient(bottom, #F04155 48%, #F36576 74%);
-	background-image: -ms-linear-gradient(bottom, #F04155 48%, #F36576 74%);
-	/*border-bottom: 8px solid #ae0e20;*/
-}
-
-#footer {
-	visibility:hidden;
-}
-
-#tasks_reminders_container {
-	height:45px;
-}
-
-#tasks_link {
-	visibility:visible;
-	width:100%;
-	height:50px;
-	margin:0 auto;
-	text-align:center;
-}
-
-.create_task_text {
-	background-color: #d21127;
-	border-bottom:3px solid #ae0e20;
-	border-radius:4px;
-	color:white;
-	font-size:25px;
-	text-decoration:none;
-	font-weight:normal;
-	text-shadow: none;
-	text-transform:uppercase;
+#sorting_options_container {
+	position: absolute;
+	top: 56px;
+	left: 185px;
+	width: 100px;
+	font-size: 15px;
+	background-color:#ebebeb;
+	border-radius:0px;
+	border:1px solid #5B9DC4;
 	font-family: 'Quicksand', sans-serif;
-	margin-top:8px;
-	width:100px;
-	padding:0px 20px;
-	position:absolute;
-	left:28%;
-	top:-1px;
+	font-size:15px;
 }
 
-/*
- * ---------------------------------------------------------------------------------------
- * Mobile Slider
- * ---------------------------------------------------------------------------------------
- */
-
-div.ui-slider {
-	margin: 0 2% 15px 20px;
-	width: 87%;
+.sort_option {
+	border-bottom:1px solid #5B9DC4;
+	padding:8px 0;
+	padding-left:3px;
+	margin:0;
+	font-weight:normal;
+	text-shadow:none;
 }
 
-input.ui-slider-input, .ui-field-contain input.ui-slider-input {
-	display:block;
-	margin: 8px auto;
+.last_option {
+	border-width:0px;
+	/*background-color:#5B9DC4;*/
+}
+
+.selected_option {
+	background-color:#5B9DC4;
+	color:white;
+}
+
+#response {
+	border:1px solid black;
+	font-family: 'Quicksand', sans-serif;
+	margin:10px auto;
 	text-align:center;
+	width:200px;
+	height:100px;
 }
-
-
-

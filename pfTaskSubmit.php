@@ -22,7 +22,7 @@ $Status = 3;
 
 
 include("pfConfig.php");
-$query2 = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID' and Status = 3"); //add user id clause later
+$query2 = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID'"); //add user id clause later
 $result2 = mysql_query($query2);
 $count = 1;
 while ($task2 = mysql_fetch_assoc($result2)) {
@@ -39,8 +39,8 @@ $query = "insert into Tasks values (NULL,'$Creation_Date', '$User_ID', '$Name', 
 $result = mysql_query($query);
 
 
-header("Location: http://stanford.edu/~scottk92/cgi-bin/priorifly_4/tasks.php");
-exit();
+header("Location: tasks.php");
+
 ?>
 
 //To grab tasks: SELECT * FROM TASKS WHERE User_ID = X and Status = 3 ORDER BY Auto_Priority or User_Priority or Deadline or Rank

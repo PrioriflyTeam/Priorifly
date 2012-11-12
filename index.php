@@ -42,6 +42,56 @@
 
 </div> <!-- /login -->
 
+<script type="text/javascript">
+
+$('#login').live('pageinit',function(event) {
+                       $("#login_form").submit(function() {
+                          
+                          
+                          // get a collection of all empty fields
+                          var emptyFields = $(":input.required").filter(function() {
+                                                                        
+                            // $.trim to prevent whitespace-only values being counted as 'filled'
+                            return !$.trim(this.value).length;
+                            });
+                          
+                          // if there are one or more empty fields
+                          if(emptyFields.length) {
+                          
+                          // do stuff; return false prevents submission
+                          emptyFields.css("border", "1px solid red");   
+                          alert("You must fill all fields!");
+                          return false;
+                          }
+                          var email_address = email.value;
+						  var password = password.value;
+                          
+                          var valid = true;
+                           $.ajax({
+                           		
+   								url: 'validate_login',
+   								type: 'POST',
+   								async: false,
+   								data: {"email":email_address, "password":password},
+   							
+   								success: function(data) {
+   									if (data == 'false') {
+   										alert("Incorrect login!");
+   										valid = false;
+   									}
+   								}
+   								
+                       		});
+                       		
+                       		return valid;
+
+							
+                          
+                          });
+                       
+                       });
+</script>
+
 <?php
 	include 'bottom_boilerplate.html';
 ?>
