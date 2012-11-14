@@ -17,32 +17,36 @@
 		?>
 		<form action="pfTaskSubmit.php" method="post" id="create_form" class="validate">
 			<div data-role="fieldcontain" id="create_title">
-    			<label for="title">Name</label>
-   				<input type="text" name="name" class="required" value=""  />
+    			<label for="title" id="titlelabel">Name</label>
+   				<input type="text" name="name" id="title" class="required" value=""  />
 			</div>
             <div data-role="fieldcontain">
-                <label for="textarea">Description</label>
+                <label for="textarea" id="textarealabel">Description</label>
                 <textarea name="description" id="textarea"></textarea>
             </div>
             <div data-role="fieldcontain">
-                <label for="datetime">Deadline</label>
-                <input type="datetime" name="deadline" class="required" id="datetime">
+                <label for="datetime" id="datetimelabel">Deadline</label>
+                <input type="datetime" name="deadline" class="required" id="deadline">
             </div>
 			<div data-role="fieldcontain">
-				<label for="rank">Rank</label>
+				<label for="rank" id="ranklabel">Rank</label>
 				<input type="range" name="rank" id="rank" class="required" value="5" min="0" max="10" data-highlight="true" />
                 <span class="slider_left">0</span>
                 <span class="slider_right">10</span>
 			</div>
             <div data-role="fieldcontain">
-                <label for="progress">Progress</label>
+                <label for="progress" id="progresslabel">Progress</label>
                 <input type="range" name="progress" id="progress" class="required"value="0" min="0" max="100" data-highlight="true" />
                 <span class="slider_left">0</span>
                 <span class="slider_right">100</span>
             </div>
             <div data-role="fieldcontain">
-                <label for="number">Time Estimate in Hours</label>
-                <input type="number" name="hours" class="required" id="number">
+                <label for="number" id="timelabel">Time Estimate in Hours</label>
+                <table>
+                <td>
+                <input type="number" name="hours" class="required" id="number"></td>
+                <td>
+                <label for="number" id="hourslabel">hours</label></td></table>
             </div>
             <input type="submit" value="Save" id="save_btn">	
 			<a href="#cancelpage" data-role="button" data-rel="dialog" id="login_show_btn">Cancel</a><div data-role="popup" id="cancelpopup"></div>

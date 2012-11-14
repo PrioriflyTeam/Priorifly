@@ -23,12 +23,9 @@
     
     $name = $task["Name"];
     $description = $task["Notes"];
-    $datetimeobj = new DateTime($task["Deadline"]);
-    $deadline = date_format($datetimeobj, 'F d\, g:ia');
-    if (is_string($deadline))
-        echo "is string works";
-    if (is_string($datetimeobj))
-        echo "it doesn't work";
+    $deadline = $task["Deadline"];
+    //$datetimeobj = new DateTime($task["Deadline"]);
+    //$deadline = date_format($datetimeobj, 'F d\, g:ia');
     //$deadline = 'Nov 10, 2012 7:40 AM';
     //$deadline = '2012-11-08 23:59:59';
     $rank = $task["Rank"];
@@ -41,32 +38,36 @@
 
 <form action="pfEditTaskSubmit.php" method="post" id="create_form" class="validate">
 <div data-role="fieldcontain" id="create_title">
-<label for="title">Name</label>
-<?php echo "<input type='text' name='name' class='required' value='".$name."'/>";?>
+<label for="title" id="titlelabel">Name</label>
+<?php echo "<input type='text' id='title' name='name' class='required' value='".$name."'/>";?>
 </div>
 <div data-role="fieldcontain">
-<label for="textarea">Description</label>
+<label for="textarea" id="textarealabel">Description</label>
 <?php echo "<textarea name='description' id='textarea'>".$description."</textarea>";?>
 </div>
 <div data-role="fieldcontain">
-<label for="datetime">Deadline</label>
-<?php echo "<input type='text' name='deadline' class='required' id='deadline' value='".$deadline."'>";?>
+<label for="datetime" id="datetimelabel">Deadline</label>
+<?php echo "<input type='datetime' name='deadline' class='required' id='deadline' value='".$deadline."'>";?>
 </div>
 <div data-role="fieldcontain">
-<label for="rank">Rank</label>
+<label for="rank" id="ranklabel">Rank</label>
 <?php echo "<input type='range' name='rank' class='required' id='rank' value='".$rank."' min='0' max='10' data-highlight='true' />";?>
 <span class="slider_left">0</span>
 <span class="slider_right">10</span>
 </div>
 <div data-role="fieldcontain">
-<label for="progress">Progress</label>
+<label for="progress" id="progresslabel">Progress</label>
 <?php echo "<input type='range' name='progress' class='required' id='progress' value='".$progress."' min='0' max='100' data-highlight='true' />";?>
 <span class="slider_left">0%</span>
 <span class="slider_right">100%</span>
 </div>
 <div data-role="fieldcontain">
-<label for="number">Time Estimate in Hours</label>
-<?php echo "<input type='number' name='hours' class='required' id='number' value='".$time."'>";?>
+<label for="number" id="timelabel">Time Estimate</label>
+<table>
+<td>
+<?php echo "<input type='number' name='hours' class='required' id='number' value='".$time."'>";?></td>
+<td>
+<label for="number" id="hourslabel">hours</label></td></table>
 </div>
 <div data-role="fieldcontain">
 <?php echo "<input type='hidden' name='task_id' value='".$Task_ID."'";?>
@@ -88,14 +89,18 @@
 
 $('#create_page').live('pageinit',function(event) {
                        $("#header_text").text("Edit Task");
-                       $(document).ready(function(){
+                       /*$(document).ready(function(){
                        $('#deadline').click(function() {
                                             $('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
                                             });
-                                         });
+                                         });*/
                        
                        $("#create_form").submit(function() {
                                           
+                                                $('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
+                                                });
+                                                
+                                                
                                           // get a collection of all empty fields
                                           var emptyFields = $(":input.required").filter(function() {
                                                                                         
@@ -117,6 +122,8 @@ $('#create_page').live('pageinit',function(event) {
                                                 }
                                           });
                        
+                       
+
                        });
 </script>
 </div>
@@ -137,7 +144,7 @@ $('#create_page').live('pageinit',function(event) {
 <div data-role="header" class="home_header">
 <h1>Delete</h1>
 </div><!-- /header -->
-<h3>Are you sure you want to delete this task?</h3>
+<div id="dialogmsg">Are you sure you want to delete this task?</div>
 <div data-role="content">
 <form action="pfRemoveTaskSubmit.php" method="post" id="delete_form">
 <div data-role="fieldcontain">
