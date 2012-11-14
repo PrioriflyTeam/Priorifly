@@ -1,11 +1,12 @@
 <?php
 	session_start();
 	include 'top_boilerplate.html';
+    
 ?>
 <div data-role="page" id="create_page">
-	<div data-role="header" class="home_header">
-		<h1>Create Task</h1>
-	</div><!-- /header -->
+	<?php
+        include 'header.html';
+    ?>
 
 	<div data-role="content">	
 		<?php
@@ -43,9 +44,9 @@
                 <label for="number">Time Estimate in Hours</label>
                 <input type="number" name="hours" class="required" id="number">
             </div>
+            <input type="submit" value="Save" id="save_btn">	
 			<a href="#cancelpage" data-role="button" data-rel="dialog" id="login_show_btn">Cancel</a><div data-role="popup" id="cancelpopup"></div>
             
-			<input type="submit" value="Save" id="save_btn">	
 		</form>
 		
 		
@@ -55,6 +56,7 @@
     <script type="text/javascript">
 
 $('#create_page').live('pageinit',function(event) {
+                       $("#header_text").text("Create Task");
                        
                        $("#create_form").submit(function() {
                                                 

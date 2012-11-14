@@ -14,63 +14,289 @@
 	<script src="jquery.ui.touch-punch.min.js"></script>
 	<script type="text/javascript">
 		
-		var active_task = null;
-		var custom_mode = false;
-		var filter_mode_on = false;
-		var default_filter_mode = true;
+		var open_task = null;
 		
-		function initialize_bottom_buttons() {
-			$("#tasks_link").removeClass('inactive_link');
- 			$("#tasks_link").addClass('active_link');
- 			$("#reminders_link").removeClass('active_link');
- 			$("#reminders_link").addClass('inactive_link');
- 			$(".tasks_plus_btn").show();
- 			$(".reminders_plus_btn").hide();
+		// Keep track of which buttons are on/off
+		var custom_reorder_mode = true;
+		var prioritize_mode = false;
+		var filter_mode = false;
+		
+		function decorate_borders() {
+			for (var i = 0; i < $(".task").length; i++) {
+ 				var color = "black";
+ 				if (i % 5 == 0) color = "#D1026C";
+ 				else if (i % 5 == 1) color = "#F2D43F";
+ 				else if (i % 5 == 2) color = "#61C155";
+ 				else if (i % 5 == 3) color = "#048091";
+ 				else if (i % 5 == 4) color = "#492D61"; 
+ 				$($(".task")[i]).css('border-color', color);
+ 			}
+		}
+		
+		/*
+		 *  ------------------------------------------------------------------------------
+		 * This section of code initializes the custom re-ordering functionality.
+		 *  ------------------------------------------------------------------------------
+		 */
+		
+		function reorder_button(on) {
+			if (on) {
+				$("#reorder_btn").css('background-color', '#d1026c');
+				$("#reorder_btn").css('border-color', '#9e0252');
+				$($('#reorder_btn').children('.btn_name')).css('color', 'black');
+			} else {
+				$("#reorder_btn").css('background-color', '#fec0e0');
+				$("#reorder_btn").css('border-color', '#fd4ba6');
+				$($('#reorder_btn').children('.btn_name')).css('color', '#626262');
+				$("#task_container").sortable('disable');
+			}
+			custom_reorder_mode = on;
+		}
+		
+		function recount() {
+			for (var i=0; i < $("#task_container").children().length; i++) {
+				var task = $("#task_container").children()[i];
+				var order = i + 1;
+   		 		$($(task).children('.task_name')).children('.count').text(order);
+			}
+		}
+		
+		function initialize_drag_and_drop() {
+			$("#task_container" ).sortable();
+			$("#task_container").sortable('disable');
+			$("#task_container").disableSelection();
+			
+			$("#task_container").sortable().bind('sortupdate', function() {
+   		 		for (var i=0; i < $("#task_container").children().length; i++) {
+   		 			var task = $("#task_container").children()[i];
+   		 			var id = parseInt($($("#task_container").children()[i]).attr('id'));
+   		 			var order = i + 1;
+   		 			$($(task).children('.task_name')).children('.count').text(order);
+   		 			$.ajax({
+   						url: 'update_user_order',
+   						type: 'POST',
+   						data: {"id":id, "order":order},
+   						success: function (response) {
+   						}
+					});
+				}
+				decorate_borders();
+			});
+			
+			$("#reorder_btn").click(function() {
+				$("#task_container").sortable('enable');
+				filter('custom_filter.php');
+				reorder_button(true);
+				prioritize_button(false);
+				filter_button(false);				
+			});
+		}
+		
+		
+		/*
+		 *  ------------------------------------------------------------------------------
+		 * This section of code initializes the prioritize button functionality.
+		 *  ------------------------------------------------------------------------------
+		 */
+		
+		function prioritize_button(on) {
+			if (on) {
+				$("#prioritize_btn").css('background-color', '#f2d43f');
+				$("#prioritize_btn").css('border-color', '#eec910');
+				$($('#prioritize_btn').children('.btn_name')).css('color', 'black');
+			} else {
+				$("#prioritize_btn").css('background-color', '#fcf5d2');
+				$("#prioritize_btn").css('border-color', '#f2d43f');
+				$($('#prioritize_btn').children('.btn_name')).css('color', '#626262');
+			}
+			prioritize_mode = on;
+		}
+		
+		function initialize_prioritize() {
+			$("#prioritize_btn").click(function() {
+				if (!prioritize_mode) filter('default_filter.php');
+				prioritize_button(true);
+				reorder_button(false);
+				filter_button(false);
+				//turn off all the other buttons
+			});	
+		}
+		
+		
+		/*
+		 *  ------------------------------------------------------------------------------
+		 *  This section of code initializes the filter functionality.
+		 *  ------------------------------------------------------------------------------
+		 */
+		 
+		function filter_button(on) {
+			if (on) {
+				$('#sort_btn').css('background-color', '#61C155');
+				$('#sort_btn').css('border-color', '#48a63d');
+				$($('#sort_btn').children('.btn_name')).css('color', 'black');
+			} else {
+				$('#sort_btn').css('background-color', '#ccebc8');
+				$('#sort_btn').css('border-color', '#61c155');
+				$($('#sort_btn').children('.btn_name')).css('color', '#626262');
+				if ($("#sorting_options_container").css('display') != 'none') {
+					$("#sorting_options_container").slideUp('slow');
+				}
+			}
+			filter_mode = on;
+		}
+
+		function initialize_filter_button() {
+			$("#sorting_options_container").hide();
+			$("#sort_btn").click(function() {
+				if ($("#sorting_options_container").css('display') != 'none') {
+					$("#sorting_options_container").slideUp('slow');
+				} else {
+					$("#sorting_options_container").slideDown('slow');
+				}
+				filter_button(true);
+				reorder_button(false);
+				prioritize_button(false);
+			});
+			
+			$(".sort_option").click(function() {
+				if (!$(this).hasClass('selected_option')) {
+					$(".sort_option").removeClass('selected_option');
+					$(this).addClass('selected_option');
+					if ($(this).hasClass('deadline_option')) filter('deadline_filter.php');
+					else if ($(this).hasClass('rank_option')) filter('rank_filter.php');
+					//change color and text
+				}
+				$("#sorting_options_container").slideUp('slow');
+				filter_mode = true;
+			});
+		}
+		
+		
+		
+		/* 
+		 *  ------------------------------------------------------------------------------
+		 * This section of code handles task showing, hiding, and clicking.
+		 *  ------------------------------------------------------------------------------
+		 */
+		 
+		function initialize_update_button() {
+			$(".submit").click(function() {
+				var submit = $(this);
+    			var id = parseInt($($($($(this)).parent()).parent()).children()[0].value);
+				var progress = parseInt($($($($(this)).parent()).parent()).children()[1].value);
+				$.ajax({
+					url: 'pfEditTask.php',
+					type: 'POST',
+					data: {"progress": progress, "id":id},
+					success: function() {
+						if (progress >= 100) {
+							$($($(submit).parent()).parent()).parent().fadeOut('slow');
+							alert("Good job finishing that mofo!");
+						} else alert("Alright, your progress was updated!");
+					}
+				});
+			});
+		}
+		
+		function initialize_swipe_right() {
+			$(".task_name").swiperight(function(e) {
+				e.stopPropagation();
+				var id = $($(this).parent()).attr('id');
+				var task = $($(this).parent());
+				//var task_name_length = $($(this).parent()).text().length - $($(this).parent()).children().text().length;
+				//var task_name = $($(this).parent()).text().substring(0, task_name_length);
+   				$.ajax({
+					url: 'pfDeleteTask.php',
+					type: 'POST',
+					data: {"id":id},
+					success: function() {
+						//alert("Cool, task '" + task_name + "' is now deleted.");
+						hide_task(task);
+						$(task).addClass('dead_task');
+						$(task).children('.arrow').hide();
+						$(task).children('.heart').show();
+						$(task).css('color', '#cecece');
+						var kill_task = setTimeout(function(){
+							$(task).fadeOut('slow');
+							$(task).remove();
+							recount();
+						}, 5000);
+						$(task).children('.heart').click(function() {
+							clearTimeout(kill_task);
+							revive(task);
+						});
+					}
+				});
+			});
+		}
+		
+		function revive(task) {
+			var id = $(task).attr('id');
+			$.ajax({
+				url: 'pfReviveTask.php',
+				type: 'POST',
+				data: {"id":id},
+				success: function() {
+					show_task(task);
+					$(task).removeClass('dead_task');
+					$(task).children('.arrow').show();
+					$(task).children('.heart').hide();
+					$(task).css('color', 'black');
+				}
+			});
+		}
+		
+		function adjust_arrow(task, hide) {
+			var task_name_height = $($(task).children('.task_name')).height();
+			$($(task).children('.arrow')).css('margin-top', (task_name_height * -1) + 'px');
+			$($(task).children('.wrench')).css('margin-top', ((task_name_height - 30) * -1) + 'px');
+			if (hide) {
+				$($(task).children('.arrow')).attr('src', 'images/down_arrow.png');
+				$($(task).children('.wrench')).hide();
+			}
+			else {
+				$($(task).children('.arrow')).attr('src', 'images/up_arrow.png');
+				$($(task).children('.wrench')).show();
+			}
+		}
+		
+		function hide_task(task) {
+			$(task).addClass('hide_task');
+			$($(task).children('.task_name')).addClass('hidden_task_name');
+			adjust_arrow(task, true)
+ 			$(task).children('.task_description').slideUp('slow');
+ 			open_task = null;
+		}
+		
+		function show_task(task) {
+			if ($(task).hasClass('dead_task')) return;
+ 			if (open_task != null) {
+ 				$(open_task).addClass('hide_task');
+ 				$($(open_task).children('.task_name')).addClass('hidden_task_name');
+ 				adjust_arrow(open_task, true);
+ 				$(open_task).children('.task_description').slideUp('slow');
+ 			}
+ 			$(task).removeClass('hide_task');
+ 			$($(task).children('.task_name')).removeClass('hidden_task_name');
+ 			adjust_arrow(task, false);
+ 			$(task).children('.task_description').slideDown('slow');
+ 			open_task = $(task);
 		}
 		
 		function initialize_tasks() {
 			$('.task_description').hide();
 			decorate_borders();
-			
 			$(".task_description").click(function(e){
 				e.stopPropagation();
 			});
- 			
  			$(".task").click(function(){
- 				if (!custom_mode) {
- 					if (active_task != null && $(this).attr('id') === active_task.attr('id')) {
- 						$(".task").addClass('hide_task');
- 						$(this).children('.task_description').slideUp('slow');
- 						active_task = null;
- 					} else {
- 						$(".task").addClass('hide_task');
- 					
- 						if (active_task != null) {
- 							$(active_task).children('.task_description').slideUp('slow');
- 						}
- 					
- 						$(this).removeClass('hide_task');
- 						$(this).children('.task_description').slideDown('slow');
- 						active_task = $(this);
- 					}
- 				}
+ 				if (open_task != null && $(this).attr('id') === open_task.attr('id')) hide_task(this);
+ 				else show_task(this);
  			});
- 			
  			$(".edit_button").click(function(){
 				window.location.replace("edit_task.php?task_id=" + $(this).attr('id'));
 			});
-		}
-		
-		function decorate_borders() {
-			for (var i = 1; i < $(".task").length; i++) {
- 				var color = "black";
- 				if (i % 5 == 4) color = "#95CFB7"; 
- 				else if (i % 5 == 1) color = "#F04155";
- 				else if (i % 5 == 2) color = "#FF823A";
- 				else if (i % 5 == 3) color = "#F2F26F";
- 				else if (i % 5 == 0) color = "#FFF7BD";
- 				$($(".task")[i]).css('border-color', color);
- 			}
+			$(".tasks_page").trigger('create');
 		}
 		
 		function filter(filter_name) {
@@ -80,132 +306,36 @@
    				success: function (response) {
     				$("#task_container").append(response);
     				initialize_tasks();
-    				$(".tasks_page").trigger('create');
-    				$(".submit").click(function() {
-    					var id = parseInt($($($($(this)).parent()).parent()).children()[0].value);
-						var progress = parseInt($($($($(this)).parent()).parent()).children()[1].value);
-						$.ajax({
-							url: 'pfEditTask.php',
-							type: 'POST',
-							data: {progress: progress, id:id},
-							success: function() {
-								alert("Alright, your progress was updated!");
-							}
-						});
-					});
+    				initialize_update_button();
+					initialize_swipe_right();
   				}
 			});
 		}
 		
-		function get_completed_tasks() {
-			$.ajax({
-   				url: 'filters/completed_tasks.php',
-   				success: function (response) {
-    				$("#completed_task_container").append(response);
-    				$(".tasks_page").trigger('create');
-    				$(".task_description").hide();
-  				}
-			});
-		}
 		
-		function initialize_sort_button() {
-			$("#sorting_options_container").hide();
-			
-			$("#sort_btn").click(function() {
-				if (!filter_mode_on) {
-					$("#sorting_options_container").slideDown('slow');
-					$("#sort_btn").css('background-color', '#169fa3');
-				} else {
-					$("#sorting_options_container").slideUp('slow');
-					$("#sort_btn").css('background-color', '#1bc0c6');
-					if (!default_filter_mode) {
-						filter('default_filter.php');
-						$(".sort_option").removeClass('selected_option');
-						$('#task_container').sortable('disable');
-						default_filter_mode = true;
-						custom_mode = false;
-					}
-				}
-				filter_mode_on = !filter_mode_on;
-			});
-			$(".sort_option").click(function() {
-				if (!$(this).hasClass('selected_option')) {
-					$(".sort_option").removeClass('selected_option');
-					$(this).addClass('selected_option');
-					filter_mode_on = false;
-					if ($(this).hasClass('deadline_option')) {
-						filter('deadline_filter.php');
-						$('#task_container').sortable('disable');
-						custom_mode = false;
-					} else if ($(this).hasClass('rank_option')) {
-						filter('rank_filter.php');
-						$('#task_container').sortable('disable');
-						custom_mode = false;
-					} else if ($(this).hasClass('custom_option')) {
-						filter('custom_filter.php');
-						$('#task_container').sortable('enable');
-						if (active_task != null) {
-							$(".task").addClass('hide_task');
- 							$(this).children('.task_description').slideUp('slow');
- 							active_task = null;
-						}
-						custom_mode = true;
-					}
-				}
-				default_filter_mode = false;
-				$("#sorting_options_container").slideUp('slow');
-				$("#sort_btn").css('background-color', '#1bc0c6');
-			});
-		}
 		
-		function initialize_prioritize() {
-			$("#prioritize_btn").click(function() {
-				if (!default_filter_mode) {
-						filter('default_filter.php');
-						$(".sort_option").removeClass('selected_option');
-						$('#task_container').sortable('disable');
-						default_filter_mode = true;
-						custom_mode = false;
-				}
-				filter('default_filter.php');
-				
-			});	
-		}
 		
-		function initialize_drag_and_drop() {
-			$( "#task_container" ).sortable();
-			$("#task_container").sortable('disable');
-			$("#task_container").disableSelection();
-			
-			$("#task_container").sortable().bind('sortupdate', function() {
-   		 		for (var i=0; i < $("#task_container").children().length; i++) {
-   		 			var id = parseInt($($("#task_container").children()[i]).attr('id'));
-   		 			var order = i + 1;
-   		 			$.ajax({
-   						url: 'update_user_order',
-   						type: 'POST',
-   						data: {"id":id, "order":order},
-   						success: function (response) {console.log("id: " + id + " order: " + order + " successfully reordered!");}
-					});
-				}
-			});
-		}
-		
+		/*
+		 *  ------------------------------------------------------------------------------
+		 * This is pre-initialization stuff that happens.
+		 *  ------------------------------------------------------------------------------
+		 */
 	
 		$('.tasks_page').live('pageinit',function(event, ui){
-			
+			$('body').css('background-image', 'none');
 			$('body').css('background-color', 'white');
-			get_completed_tasks();
-			initialize_bottom_buttons();
-			filter('default_filter.php');
-			initialize_sort_button();
-			initialize_prioritize();
-			initialize_drag_and_drop();
 			$("#tasks_link").attr('href', '');
-			$("#tasks_link").click(function(e) {
+			$(".create_task_text").click(function(e) {
 				e.preventDefault();
 				window.location.replace("create_task.php");
 			});
+			filter('default_filter.php'); //change this
+			initialize_filter_button();
+			initialize_prioritize();
+			initialize_drag_and_drop();
+			prioritize_button(true);
+			reorder_button(false);
+			filter_button(false);
 		});
 	</script>
 	
@@ -215,23 +345,17 @@
 
 	<div data-role="content">
 		<div class="filter_container">
-			<!--div><img src="images/priorifly_icons/64-zap.png" alt="zap" /></div-->
-			<div id="prioritize_btn">
-				<div class="btn_name">Prioritize</div>
-			</div>
-			<div id="sort_btn">
-				<!--div><img src="images/priorifly_icons/104-index-cards.png" alt="sort" /></div-->
-				<div class="btn_name">Filter</div>
-			</div>
+			<div id="reorder_btn"><div class="btn_name">Reorder</div></div>
+			<div id="prioritize_btn"><div class="btn_name">Prioritize</div></div>
+			<div id="sort_btn"><div class="btn_name">Filter</div></div>
 			<div id="sorting_options_container">
 				<div class="sort_option deadline_option">&bull; Deadline</div>
-				<div class="sort_option rank_option">&bull; Rank</div>
-				<div class="sort_option last_option custom_option">&bull; Custom</div>
+				<div class="sort_option rank_option last_option">&bull; Rank</div>
 			</div>
 		</div>
 		<div id="task_container"></div>
-		<div id="completed_task_container"></div>
-		<div id="deleted_task_container"></div>
+		<!--div id="completed_task_container"></div>
+		<div id="deleted_task_container"></div-->
 	</div><! -- /content -->
 	
 	<?php

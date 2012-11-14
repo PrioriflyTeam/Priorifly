@@ -5,19 +5,25 @@ $Password1 = $_POST["password"];
 $Password2 = $_POST["retype_password"];
 
 
+//Calculate other stuff and name it the same as in database
+
 date_default_timezone_set('America/Los_Angeles');
 $Creation_Date = date('Y/m/d H:i:s', time()); 
 
+//$Time_Between = $Deadline->diff($Creation_Date);
+//$Auto_Priority = 
 
+//$User_Priority = 
 
 $Active = 1;
-$Salt = rand(1000000000, 9999999999);
-$Digest = crypt($Password1, $Salt);
+$Salt = 0;
 
 
 include("pfConfig.php");
 //Currently where 10 is we should grab User_ID from sessions cookie
-$query = "insert into Users values (NULL,'$Creation_Date', '$Email', '$Digest', '$Salt', '$Active')";
+$query = "insert into Users values (NULL,'$Creation_Date', '$Email', '$Password1', '$Salt', '$Active')";
 $result = mysql_query($query);
 
 ?>
+<p>Thanks for signing up!</p>
+</body>
