@@ -35,7 +35,7 @@ $('#signup').live('pageinit',function(event) {
                           	 alert("Email is not of valid format.");
                           	return false;
                           } 
-                          console.log(password.value);
+                          console.log("1 " + password.value);
                           console.log(retype_password.value);
                           if(password.value != retype_password.value) {
                            alert("Passwords must match!");
