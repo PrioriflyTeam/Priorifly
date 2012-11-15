@@ -77,8 +77,11 @@
 			</form>
 		</div>
 		
+		<div id="signup_link_container">
+			<a id="signup_link" href="signup.php" data-role="button" data-theme="b" data-inline="true" rel="external" data-ajax="false">Sign Up</a>
+		</div>
 		<div id="forgot_pword_link_container">
-			<a href="forgot_pword.php" id="forgot_pword_link">Forgot your password?</a>
+			<a href="forgot_pword.php" id="forgot_pword_link" rel="external" data-ajax="false">Forgot your password?</a>
 		</div>
 		
 		<div id="signup_link_container">
