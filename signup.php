@@ -4,6 +4,10 @@
 
 <div data-role="page" id="signup">
 	<script type="text/javascript">
+		$('#signup').live('pagebeforeshow',function(event, ui){
+ 			//alert("signup");
+ 			$('body').css('background-color', '#556270');
+		});
 
 $('#signup').live('pageinit',function(event) {
 		$('body').css('background-color', '#556270');
@@ -63,9 +67,10 @@ $('#signup').live('pageinit',function(event) {
 							
                           
                           });
+                          });
                        
-                       });
-</script>
+
+	</script>
 	<div data-role="header" data-theme="b">
 		<a href="index.php" data-icon="back" data-theme="b">Back</a>
 		<h1>Sign Up</h1>
@@ -96,6 +101,7 @@ $('#signup').live('pageinit',function(event) {
 	
 	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false"></div>
 </div> <!-- /signup -->
+
 
 <?php
 	include 'bottom_boilerplate.html';
