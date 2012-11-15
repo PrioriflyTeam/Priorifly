@@ -67,6 +67,7 @@ $('#signup').live('pageinit',function(event) {
 							
                           
                           });
+                          });
                        
 
 	</script>
