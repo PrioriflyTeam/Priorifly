@@ -163,7 +163,7 @@
 	text-overflow: ellipsis;
 }
 
-.arrow, .wrench, .heart {
+.arrow, .wrench, .heart, .trash_heart {
 	margin-top: -25px;
 	left: 290px;
 	position: absolute;
@@ -173,7 +173,7 @@
 	display:none;
 }
 
-.wrench {
+.wrench, .trash_heart {
 	left:285px;
 	display:none;
 }
