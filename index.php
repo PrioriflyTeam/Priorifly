@@ -14,6 +14,56 @@
  			$('body').css('background-image', 'url(images/background_scaled.jpg)');
  			//$('body').css('background-size', 'cover');
 		});
+	$('#login').live('pageinit',function(event) {
+       $("#login_form").submit(function() {
+          
+          
+          // get a collection of all empty fields
+          var emptyFields = $(":input.required").filter(function() {
+                                                        
+            // $.trim to prevent whitespace-only values being counted as 'filled'
+            return !$.trim(this.value).length;
+            });
+          
+          // if there are one or more empty fields
+          if(emptyFields.length) {
+          
+          // do stuff; return false prevents submission
+          emptyFields.css("border", "1px solid red");   
+          alert("You must fill all fields!");
+          return false;
+          }
+          
+          var email_address = username.value;
+           //console.log(email_address);
+	  var password_value = password.value;
+	                   
+      //console.log(password_value);
+      var valid = true;
+       $.ajax({
+                 		
+	url: 'validate_login',
+	type: 'POST',
+	async: false,
+	data: {"email":email_address, "password":password_value},
+
+	success: function(data) {
+		if (data == 'false') {
+			alert("Incorrect login!");
+			valid = false;
+		}
+	}
+
+       		});
+       		
+       		return valid;
+       		
+
+
+            
+            });
+         
+         });
 	</script>
 	<div data-role="header"></div><!-- /header -->
 

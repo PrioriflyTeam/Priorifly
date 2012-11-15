@@ -96,7 +96,7 @@
  				if (open_task != null && $(this).attr('id') === open_task.attr('id')) hide_task(this);
  				else show_task(this);
  			});
- 			$(".edit_button").click(function(){
+ 			$(".trash_heart").click(function(){
 				window.location.replace("edit_task.php?task_id=" + $(this).attr('id'));
 			});
 			$(".tasks_page").trigger('create');
@@ -109,8 +109,6 @@
    				success: function (response) {
     				$("#task_container").append(response);
     				initialize_tasks();
-    				initialize_update_button();
-					initialize_swipe_right();
   				}
 			});
 		}
@@ -125,7 +123,6 @@
 		$('.trash_page').live('pageinit',function(event, ui){
 			$('body').css('background-image', 'none');
 			$('body').css('background-color', 'white');
-			$("#tasks_link").attr('href', '');
 			filter('trash_filter.php'); //change this
 		});
 	</script>
