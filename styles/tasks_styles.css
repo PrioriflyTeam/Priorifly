@@ -48,7 +48,7 @@
 	background-image: -webkit-linear-gradient(bottom, #048091 48%, #05a2b7 74%);
 	background-image: -ms-linear-gradient(bottom, #048091 48%, #05a2b7 74%);*/
 	background-image: none;
-	background-color: #4391FF;
+	background-color: #26B7FF;
 	border-bottom: 4px solid #023d45;
 	height:38px;
 }
@@ -163,7 +163,7 @@
 	text-overflow: ellipsis;
 }
 
-.arrow, .wrench, .heart, .trash_heart {
+.arrow, .wrench, .heart {
 	margin-top: -25px;
 	left: 290px;
 	position: absolute;
@@ -173,7 +173,7 @@
 	display:none;
 }
 
-.wrench, .trash_heart {
+.wrench {
 	left:285px;
 	display:none;
 }
@@ -221,7 +221,7 @@ a {
 }
 
 .active_link {
-	background-color: #048091;
+	background-color: #26B7FF;
 	border-top: 4px solid #05a2b7;
 	/*background-image: linear-gradient(bottom, #048091 48%, #05a2b7 74%);
 	background-image: -o-linear-gradient(bottom, #048091 48%, #05a2b7 74%);
