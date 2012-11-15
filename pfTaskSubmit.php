@@ -8,6 +8,7 @@ $Progress = $_POST["progress"];
 $Total_Time = $_POST["hours"];
 $User_ID = $_SESSION['user_id'];
 
+if (isset($_POST["name"])) {
 
 //Calculate other stuff and name it the same as in database
 
@@ -38,6 +39,7 @@ while ($task2 = mysql_fetch_assoc($result2)) {
 $query = "insert into Tasks values (NULL,'$Creation_Date', '$User_ID', '$Name', '$Rank', '$Auto_Priority', 1, '$Deadline', '$Total_Time', '$Progress', '$Notes', '$Status')";
 $result = mysql_query($query);
 
+}
 
 header("Location: http://stanford.edu/~scottk92/cgi-bin/priorifly_4/tasks.php");
 exit();
