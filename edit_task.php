@@ -88,43 +88,45 @@
 <script type="text/javascript">
 
 $('#create_page').live('pageinit',function(event) {
-                       $("#header_text").text("Edit Task");
-                       /*$(document).ready(function(){
-                       $('#deadline').click(function() {
-                                            $('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
-                                            });
-                                         });*/
+	 $("#header_text").text("Edit Task");
+	 /*$(document).ready(function(){
+	 $('#deadline').click(function() {
+	                      $('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
+	                      });
+	                   });
                        
-                       $("#create_form").submit(function() {
-                                          
-                                                $('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
-                                                });
-                                                
-                                                
-                                          // get a collection of all empty fields
-                                          var emptyFields = $(":input.required").filter(function() {
-                                                                                        
-                                                                                        // $.trim to prevent whitespace-only values being counted as 'filled'
-                                                                                        return !$.trim(this.value).length;
-                                                                                        });
-                                          
-                                          // if there are one or more empty fields
-                                          if(emptyFields.length) {
-                                          
-                                          // do stuff; return false prevents submission
-                                          emptyFields.css("border", "1px solid red");   
-                                          alert("You must fill all fields!");
-                                          return false;
-                                          }
-                                               if(number.value  <= 0) {
-                                             	alert("Not a valid time estimate!");
-                                                return false;
-                                                }
-                                          });
-                       
-                       
+     $("#create_form").submit(function() {
+                        
+     	$('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
+      });
+      */
+          
+             
+     $("#create_form").submit(function() {
+                        
+         // get a collection of all empty fields
+         var emptyFields = $(":input.required").filter(function() {
+                                                       
+         // $.trim to prevent whitespace-only values being counted as 'filled'
+         return !$.trim(this.value).length;
+         });
+         
+         // if there are one or more empty fields
+         if(emptyFields.length) {
+         
+         // do stuff; return false prevents submission
+         emptyFields.css("border", "1px solid red");   
+         alert("You must fill all fields!");
+         return false;
+         }
+              if(number.value  <= 0) {
+            	alert("Not a valid time estimate!");
+               return false;
+               }
+    });
+        
 
-                       });
+        });
 </script>
 </div>
 </div>

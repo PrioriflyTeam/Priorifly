@@ -7,6 +7,38 @@
 	<?php
         include 'header.html';
     ?>
+    
+<script type="text/javascript">
+
+$('#create_page').live('pageinit',function(event) {
+      $("#header_text").text("Create Task");
+      
+      $("#create_form").submit(function() {
+                               
+        	// get a collection of all empty fields
+        	var emptyFields = $(":input.required").filter(function() {
+                                                      
+        		// $.trim to prevent whitespace-only values being counted as 'filled'
+        		return !$.trim(this.value).length;
+       		});
+        
+	        // if there are one or more empty fields
+	        if(emptyFields.length) {
+	        
+	        	// do stuff; return false prevents submission
+	        	emptyFields.css("border", "1px solid red");
+	        	alert("You must fill all fields!");
+	        	return false;
+	        }
+	        
+	        if(number.value  <= 0) {
+	     		alert("Not a valid time estimate!");
+	        	return false;
+	        }
+        });
+      
+      });
+</script>
 
 	<div data-role="content">	
 		<?php
@@ -57,36 +89,7 @@
 	</div><!-- /content -->
     <div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
     </div>
-    <script type="text/javascript">
 
-$('#create_page').live('pageinit',function(event) {
-                       $("#header_text").text("Create Task");
-                       
-                       $("#create_form").submit(function() {
-                                                
-                                                // get a collection of all empty fields
-                                                var emptyFields = $(":input.required").filter(function() {
-                                                                                              
-                                                                                              // $.trim to prevent whitespace-only values being counted as 'filled'
-                                                                                              return !$.trim(this.value).length;
-                                                                                              });
-                                                
-                                                // if there are one or more empty fields
-                                                if(emptyFields.length) {
-                                                
-                                                // do stuff; return false prevents submission
-                                                emptyFields.css("border", "1px solid red");
-                                                alert("You must fill all fields!");
-                                                return false;
-                                                }
-                                                if(number.value  <= 0) {
-                                             	alert("Not a valid time estimate!");
-                                                return false;
-                                                }
-                                                });
-                       
-                       });
-    </script>
 </div>
 
 <div data-role="page" id="cancelpage" data-title="Are you sure you want to cancel?">
