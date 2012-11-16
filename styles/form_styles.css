@@ -138,6 +138,7 @@ font-family: 'Quicksand', sans-serif;
 #save_btn {
 	color: black;
 	background: red;
+	width:100%;
 }
 
 #dialogmsg {

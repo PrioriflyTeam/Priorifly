@@ -166,7 +166,7 @@
 	text-overflow: ellipsis;
 }
 
-.arrow, .wrench, .heart {
+.arrow, .wrench, .heart, .trash_heart {
 	margin-top: -25px;
 	left: 290px;
 	position: absolute;
@@ -179,6 +179,11 @@
 .wrench {
 	left:285px;
 	display:none;
+}
+
+.trash_heart {
+	margin-top:10px;
+	left:285px;
 }
 
 .task_name {

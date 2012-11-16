@@ -4,7 +4,7 @@
 	$User_ID = $_SESSION['user_id'];
 	
 	
-	$query1 = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID' and Status = 3");
+	$query1 = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID' and Status = 2");
 	$result1 = mysql_query($query1);
 	while ($task1 = mysql_fetch_assoc($result1)) {
 		date_default_timezone_set('America/Los_Angeles');
@@ -23,7 +23,7 @@
 	}
 	
 	
-	$query = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID' and Status = 3 ORDER BY Auto_Priority DESC");
+	$query = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID' and Status = 2 ORDER BY Auto_Priority DESC");
 	$result = mysql_query($query);
 	$count = 0;
 	while ($task = mysql_fetch_assoc($result)) {

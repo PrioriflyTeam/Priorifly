@@ -2,7 +2,7 @@
 	session_start();
 	include("pfConfig.php");
 	$User_ID = $_SESSION['user_id'];
-	$query = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID' and Status = 3 Order by Deadline"); 
+	$query = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID' and Status = 2 Order by Deadline"); 
 	$result = mysql_query($query);
 	$count = 0;
 	while ($task = mysql_fetch_assoc($result)) {

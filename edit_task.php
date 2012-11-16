@@ -88,6 +88,7 @@
 <script type="text/javascript">
 
 $('#create_page').live('pageinit',function(event) {
+	 $($("#save_btn").parent()).css('width', '100%')
 	 $("#header_text").text("Edit Task");
 	 $(document).ready(function(){
 	 $('#deadline').click(function() {

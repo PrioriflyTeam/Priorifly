@@ -11,8 +11,9 @@
 		echo "<div class='task hide_task' id='$task_id'>
 					<div class='task_name hidden_task_name'>".$task["Name"]."</div>".
 				"<img class='arrow' src='images/down_arrow.png' alt='arrow'/>".
-				"<img class='trash_heart' id='$task_id' src='images/heart.png' alt='trash_heart'/>".
+				
 				"<div class='task_description'>".
+				"<img class='trash_heart' id='$task_id' src='images/heart.png' alt='trash_heart'/>".
 				$task["Notes"].
 			"</div>".
 		"</div>";
