@@ -34,7 +34,10 @@
  #signup_link_container {
  	border-width:0px;
  }
-
+ 
+ .notifications_link_img {
+ 	margin-top:-10px;
+ }
 /*
  * ---------------------------------------------------------------------------------------
  * HEADER STYLES
@@ -196,6 +199,7 @@
 	border-bottom:1px solid black;
 	padding:15px 0px;
 	font-family: 'Quicksand', sans-serif;
+	min-height:25px;
 }
 
 .completed_task {
@@ -207,6 +211,20 @@
 	width:270px;
 	font-size:15px;
 	font-family: 'Quicksand', sans-serif;
+}
+
+.no_tasks {
+	text-align:center;
+	font-family: 'Quicksand', sans-serif;
+	font-size:30px;
+	padding:10px 0px;
+}
+
+.no_tasks_sidenote {
+	text-align:center;
+	font-family: 'Quicksand', sans-serif;
+	font-size:20px;
+	padding:40px 20px;
 }
 
 

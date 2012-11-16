@@ -10,7 +10,7 @@
 		});
 
 $('#signup').live('pageinit',function(event) {
-		$('body').css('background-color', '#556270');
+		$('body').css('background-image', 'url(images/home_backround.jpg)');
                        $("#signup_form").submit(function() {
                           
                           
@@ -78,9 +78,7 @@ $('#signup').live('pageinit',function(event) {
 
 	<div data-role="content">
 		<div id="signup_form_container">
-			<div id="signup_logo_container">
-				<img id="signup_logo_img" src="images/signup_logo_1.png" alt="logo" />
-			</div>
+
 			<form id="signup_form" action="pfSignUpSubmit.php" method="post" data-theme="e" class="validate">
 				<div data-role="fieldcontain" class="ui-hide-label" id="email_field">
 

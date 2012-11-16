@@ -52,14 +52,14 @@
 		function adjust_arrow(task, hide) {
 			var task_name_height = $($(task).children('.task_name')).height();
 			$($(task).children('.arrow')).css('margin-top', (task_name_height * -1) + 'px');
-			$($(task).children('.wrench')).css('margin-top', ((task_name_height - 30) * -1) + 'px');
+			$($(task).children('.trash_heart')).css('margin-top', ((task_name_height - 30) * -1) + 'px');
 			if (hide) {
 				$($(task).children('.arrow')).attr('src', 'images/down_arrow.png');
-				$($(task).children('.wrench')).hide();
+				$($(task).children('.trash_heart')).fadeOut('slow');
 			}
 			else {
 				$($(task).children('.arrow')).attr('src', 'images/up_arrow.png');
-				$($(task).children('.wrench')).show();
+				$($(task).children('.trash_heart')).fadeIn('slow');
 			}
 		}
 		
@@ -121,6 +121,7 @@
 		 */
 	
 		$('.trash_page').live('pageinit',function(event, ui){
+			$(".trash_heart").show();
 			$('body').css('background-image', 'none');
 			$('body').css('background-color', 'white');
 			filter('trash_filter.php'); //change this

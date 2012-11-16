@@ -6,7 +6,7 @@
 	<script type="text/javascript">
 		$('#fgt_pword').live('pagebeforeshow',function(event, ui){
  			//alert("signup");
- 			$('body').css('background-color', '#556270');
+ 			$('body').css('background-image', 'url(images/home_backround.jpg)');
 		});
 	</script>
 	<div data-role="header" data-theme="b">
@@ -16,9 +16,6 @@
 
 	<div data-role="content">
 		<div id="fgt_pword_form_container">
-			<div id="fgt_pword_logo_container">
-				<img id="fgt_pword_logo_img" src="images/fgt_pword_logo_1.png" alt="logo" />
-			</div>
 			<form id="fgt_pword_form" action="fgt_pword_submit.php" method="post" data-theme="e">
 				<div data-role="fieldcontain" class="ui-hide-label" id="email_field">
 					<label for="email">Email:</label>

@@ -4,10 +4,13 @@
 	$User_ID = $_SESSION['user_id'];
 	$query = sprintf("SELECT * FROM Tasks WHERE User_ID = '$User_ID' and Status = 3 Order by Deadline"); 
 	$result = mysql_query($query);
+	$count = 0;
 	while ($task = mysql_fetch_assoc($result)) {
+		$count++;
 		$progress = $task["Progress"];
 		$task_id = $task["Task_ID"];
-		$deadline = $task["Deadline"];
+		$datetimeobj = new DateTime($task["Deadline"]);
+		$deadline = date_format($datetimeobj, 'M d\, g:ia');
 		echo "<div class='task hide_task' id='$task_id'><div class='task_name hidden_task_name'>".
 				"<span class='deadline'>".$deadline."</span>.  ".$task["Name"].
 				"</div>".
@@ -23,5 +26,16 @@
 					//"</form>".
 			"</div>".
 		"</div>";
+	}
+	if ($count == 0) {
+		echo "<div class='no_tasks'>You have no tasks.</div>";
+		$random_message = rand(0,2);
+		if ($random_message == 0) {
+			echo "<div class='no_tasks_sidenote'>Whoot!</div>";
+		} elseif ($random_message == 1) {
+			echo "<div class='no_tasks_sidenote'>I'll get the wine.</div>";
+		} elseif ($random_message == 2) {
+			echo "<div class='no_tasks_sidenote'>Get busy!</div>";
+		}
 	}
 ?>

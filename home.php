@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['user_id'])) {
-		header("Location: sorry.php");
+		header("Location: index.php");
 	} else {
 		include 'top_boilerplate.html';
 	}
@@ -10,7 +10,7 @@
 <div data-role="page" id="home">
 	<script type="text/javascript">
 		$('#home').live('pagebeforeshow',function(event, ui){
- 			$('body').css('background-color', 'white');
+ 			$('body').css('background-image', 'url(images/home_backround.jpg)');
  			$("#go_to_tasks_button").click(function() {
  				window.location.href = "tasks.php";
  			});
@@ -22,11 +22,10 @@
 	<div data-role="header"></div><!-- /header -->
 
 	<div data-role="content">
-		<h1 id="home_title">Priorifly</h1>
+		<h1 class="home_priorifly_logo">Priorifly</h1>
 		
 		<div id="go_to_tasks_button">My Tasks</div>
 		<div id="logout_button">Logout</div>
-		<p class="small_logo">Illuminate your priorities.</p>
 		<!--p id="about_us_link">About Us</p-->
 		
 	</div><! -- /content -->

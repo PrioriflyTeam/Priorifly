@@ -1,4 +1,5 @@
 <?php
+session_set_cookie_params(10000000000,"/");
 session_start();
 include("pfConfig.php");
 $email =  $_POST['email'];

@@ -24,4 +24,15 @@
 			"</div>".
 		"</div>";
 	}
+	if ($count == 0) {
+		echo "<div class='no_tasks'>You have no tasks.</div>";
+		$random_message = rand(0,2);
+		if ($random_message == 0) {
+			echo "<div class='no_tasks_sidenote'>Whoot!</div>";
+		} elseif ($random_message == 1) {
+			echo "<div class='no_tasks_sidenote'>I'll get the wine.</div>";
+		} elseif ($random_message == 2) {
+			echo "<div class='no_tasks_sidenote'>Get busy!</div>";
+		}
+	}
 ?>
