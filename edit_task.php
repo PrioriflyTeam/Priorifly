@@ -23,9 +23,9 @@
     
     $name = $task["Name"];
     $description = $task["Notes"];
-    $deadline = $task["Deadline"];
-    //$datetimeobj = new DateTime($task["Deadline"]);
-    //$deadline = date_format($datetimeobj, 'F d\, g:ia');
+    //$deadline = $task["Deadline"];
+    $datetimeobj = new DateTime($task["Deadline"]);
+    $deadline = date_format($datetimeobj, 'M d\, g:ia');
     //$deadline = 'Nov 10, 2012 7:40 AM';
     //$deadline = '2012-11-08 23:59:59';
     $rank = $task["Rank"];
@@ -36,7 +36,7 @@
 <a href="#deletepage" data-role="button" data-rel="dialog" data-icon="delete" id="deletepopup">Delete</a><div data-role="popup" id="deletepopup"></div>
 
 
-<form action="pfEditTaskSubmit.php" method="post" id="create_form" class="validate">
+<form action="pfEditTaskSubmit.php" data-ajax="false" method="post" id="create_form" class="validate">
 <div data-role="fieldcontain" id="create_title">
 <label for="title" id="titlelabel">Name</label>
 <?php echo "<input type='text' id='title' name='name' class='required' value='".$name."'/>";?>
@@ -47,7 +47,7 @@
 </div>
 <div data-role="fieldcontain">
 <label for="datetime" id="datetimelabel">Deadline</label>
-<?php echo "<input type='datetime' name='deadline' class='required' id='deadline' value='".$deadline."'>";?>
+<?php echo "<input type='text' name='deadline' class='required' id='deadline' value='".$deadline."'>";?>
 </div>
 <div data-role="fieldcontain">
 <label for="rank" id="ranklabel">Rank</label>
@@ -89,17 +89,12 @@
 
 $('#create_page').live('pageinit',function(event) {
 	 $("#header_text").text("Edit Task");
-	 /*$(document).ready(function(){
+	 $(document).ready(function(){
 	 $('#deadline').click(function() {
 	                      $('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
 	                      });
 	                   });
-                       
-     $("#create_form").submit(function() {
-                        
-     	$('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
-      });
-      */
+      
           
              
      $("#create_form").submit(function() {
@@ -124,6 +119,9 @@ $('#create_page').live('pageinit',function(event) {
                return false;
                }
     });
+                       
+                      /* $('#deadline').clone().attr('type', 'datetime').insertAfter('#deadline').prev().remove();
+                       });*/
         
 
         });
