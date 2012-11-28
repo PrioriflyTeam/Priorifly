@@ -26,11 +26,7 @@
 		
 		<div id="go_to_tasks_button">My Tasks</div>
 		<div id="logout_button">Logout</div>
-		<p style="text-align:center; padding-top:40px">
-			<a href="about.php" id="about_us_link">About Us</a>
-			<span class="hyphen">-</span>
-			<a href="contact.php" id="contact_link">Contact Us</a>
-		</p>
+		<!--p id="about_us_link">About Us</p-->
 		
 	</div><! -- /content -->
 	

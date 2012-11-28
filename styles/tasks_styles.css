@@ -54,8 +54,8 @@
 	background-image: -webkit-linear-gradient(bottom, #048091 48%, #05a2b7 74%);
 	background-image: -ms-linear-gradient(bottom, #048091 48%, #05a2b7 74%);*/
 	background-image: none;
-	background-color: #245A96;
-	border-bottom: 4px solid #1A416D;
+	background-color: #26B7FF;
+	border-bottom: 4px solid #0075af;
 	height:38px;
 }
 
@@ -277,8 +277,8 @@ a {
 }
 
 .active_link {
-	background-color: #245A96;
-	border-top: 4px solid #377fcf;
+	background-color: #26B7FF;
+	border-top: 4px solid #74d1ff;
 }
 
 #footer {
@@ -298,10 +298,10 @@ a {
 }
 
 .create_task_text {
-	background-color: #f4d958;
-	border-bottom:3px solid #d4b20e;
+	background-color: #492D61;
+	border-bottom:3px solid #2f1d3e;
 	border-radius:4px;
-	color:black;
+	color:white;
 	font-size:25px;
 	text-decoration:none;
 	font-weight:normal;

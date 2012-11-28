@@ -69,11 +69,7 @@
 		<div class="signup_btn"><a id="signup_link" href="signup.php">Sign Up</a></div>	
 		
 		<div class="forgot_password_btn"><a id="forgot_password_link" href="forgot_pword.php">Forgot Your Password?</a></div>	
-		<p style="text-align:center; padding-top:50px">
-			<a href="about.php" id="about_us_link">About Us</a>
-			<span class="hyphen">-</span>
-			<a href="contact.php" id="contact_link">Contact Us</a>
-		</p>
+
 	</div><! -- /content -->
 	
 	<div data-role="footer" data-id="samebar" data-position="fixed" data-tap-toggle="false"></div>

@@ -202,15 +202,11 @@
 					data: {"progress": progress, "id":id},
 					success: function() {
 						if (progress >= 100) {
-
-							$($($(submit).parent()).parent()).children('.progress_update_message').text("Good job on finishing that!  It's in the recycle bin now.");
-							$($($(submit).parent()).parent()).children('.progress_update_message').slideDown('slow').delay(1000).slideUp('slow');
-							window.setTimeout(function(){
-								$($($(submit).parent()).parent()).parent().fadeOut('slow', function() {
-									$($($(submit).parent()).parent()).parent().remove();
-									recount();
-								});}
-								, 3000);
+							$($($(submit).parent()).parent()).parent().fadeOut('slow');
+							//$($($(submit).parent()).parent()).children('.progress_update_message').text('Good job finishing that, mofo');
+							//$($($(submit).parent()).parent()).children('.progress_update_message').slideDown('slow').delay(1000).slideUp('slow');
+							$($($(submit).parent()).parent()).parent().remove();
+							recount();
 						} else {
 							$($($(submit).parent()).parent()).children('.progress_update_message').text('Your progress has been updated');
 							$($($(submit).parent()).parent()).children('.progress_update_message').slideDown('slow').delay(1000).slideUp('slow');

@@ -183,7 +183,7 @@ font-family: 'Quicksand', sans-serif;
 }
 
 #number {
-	display:block;
+        display: block;
 	-webkit-box-shadow: none;
 font-family: 'Quicksand', sans-serif;
 	font-weight:normal;
@@ -191,7 +191,8 @@ font-family: 'Quicksand', sans-serif;
 	color:black;
 	font-size:15px;
 	width:50px;
-	data-inline:true;
+        text-align: center;
+       
 }
 
 #progress {
@@ -213,13 +214,49 @@ font-family: 'Quicksand', sans-serif;
 font-family: 'Quicksand', sans-serif;
 	font-weight:normal;
 	text-shadow:none;
-	color:black;
 	font-size:large;
 color: black;
-background white;
+	text-align:center;
 }
 
-#deletepage {
-background: #c2edff;
+#cancel_msg {
+ background-color: black;
+ opacity: 1;
 }
 
+.cancelmsg {
+font-family: 'Quicksand', sans-serif;
+	font-weight:normal;
+	text-shadow:none;
+	font-size:large;
+color: black;
+	text-align:center;
+}
+
+#deletebtndiv {
+  margin-left:5px;
+}
+
+#delete_btn {
+}
+
+.ui-page {
+	opacity: 1;
+}
+
+.ui-dialog-background {
+	opacity: 0.5;
+	display: block !important;
+	-webkit-transition: opacity 0.2s ease-in;
+}
+
+.ui-dialog-background.pop.in {
+	opacity: 1;
+	-webkit-transition: opacity 0.2s ease-in;
+}
+
+.ui-dialog {
+	min-height: 100% !important;
+	background: transparent !important;
+	z-index: 3000;
+}
