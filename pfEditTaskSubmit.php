@@ -30,7 +30,7 @@ if ($hours_left_total > 0 && $Progress < 100) {
     $query1 = sprintf("UPDATE Tasks SET Name = '$Name', Notes = '$Notes', Deadline = '$Deadline', Rank = '$Rank', Auto_Priority = '$Auto_Priority', Progress = '$Progress', Total_Time = '$Total_Time', Status = 2 WHERE Task_ID = '$Task_ID'");
     $result1 = mysql_query($query1);
 } else {
-    $query2 = sprintf("Select * From Tasks Where UserID = '$User_ID' and Status = 1");
+    $query2 = sprintf("Select * From Tasks Where User_ID = '$User_ID' and Status = 1");
     $result2 = mysql_query($query2);
     while ($task = mysql_fetch_assoc($result2)) {
         $taskID = $task['Task_ID'];
@@ -49,7 +49,7 @@ $User_ID = $row['User_ID'];
 
 date_default_timezone_set('America/Los_Angeles');
 $Current_Date = date('Y/m/d H:i:s', time());
-$hours_left = $row['Deadline'] - $Current_Date;
+$hours_left = strtotime($row['Deadline']) - strtotime($Current_Date);
 
 if($hours_left > 0 && $row['Progress'] < 100 && $row['Status'] == 1) {
         $query2 = sprintf("Select * From Tasks Where UserID = '$User_ID' and Status = 2");

@@ -1,6 +1,5 @@
 <?php
 	include("pfConfig.php");
-	
 	$Email = $_POST['email'];
     console.log($email);
     $query = sprintf("SELECT * FROM Users WHERE Email LIKE '$Email'");

@@ -1,19 +1,16 @@
 	<div data-role="header" id="nav_header">
 		<h1 id="header_text">Tasks</h1>
-		<div id="home_link"><img src="images/priorifly_icons/170-butterfly.png" class="home_link_img" alt="butterfly" /></div>
-		<div id="notifications_link"><img src="images/priorifly_icons/18-envelope.png" class="notifications_link_img" alt="notifications" /></div>
+		<div class="home_link">
+				<img src="images/priorifly_icons/170-butterfly.png" class="home_link_img" alt="butterfly" />
+		</div>
+		<div class="notifications_link">
+				<img src="images/priorifly_icons/18-envelope.png" class="notifications_link_img" alt="notifications" />
+		</div>
 	</div>
+	
 	<script type="text/javascript">
-		$("#home_link").click(function(){
-			window.location.href = "home.php";
+		$(".home_link").click(function() {
+			window.location.replace("home.php");
 		});
-		$("#notifications_link").click(function(){
-			window.location.replace("trash.php");
-		});
-		$("#header_edit_icon").click(function(){
-			
-		});
-		$("#header_create_icon").click(function(){
-			window.location.replace("create_task.php");
-		});
+		
 	</script>
