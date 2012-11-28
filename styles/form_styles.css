@@ -1,15 +1,83 @@
-#username_field, #password_field, #first_name_field, #last_name_field, #email_field, #retype_password_field {
+#username_field, #password_field, #first_name_field, #last_name_field, #email_field, #retype_password_field, #fgt_email, #signup_password_field {
 	border:none;
 	padding:5px 0;
 }
 
-.ui-submit, #signup_link, #username, #password, #login_submit_btn, #retype_password, #email, #first_name, #last_name {
+.ui-submit, #signup_link, #username, #password, #retype_password, #email, #first_name, #last_name, #fgt_email, #signup_password, #signup_password {
 	height:45px;
 	width:250px;
 	display:block;
 	margin:0 auto;
 	border-radius:2px;
 }
+
+#fgt_email {
+	padding-left:5px;
+}
+
+.login_notification_box, .login_submit_btn, .signup_btn, .forgot_password_btn, .forgot_password_submit_btn, .fgt_pword_notification,
+.forgot_password_success, .signup_submit_btn, .signup_notification, .signup_success {
+	border-radius:3px;
+ 	width:250px;
+ 	padding-top:15px;
+ 	height:35px;
+ 	text-align:center;
+ 	font-family: 'Arial', cursive;
+ 	margin:5px auto;
+}
+
+.login_submit_btn, .forgot_password_submit_btn, .forgot_password_success, .signup_submit_btn, .signup_success {
+	border:1px solid #f0cc1a;
+	color:black;
+	background-color: #f7e488;
+}
+
+.login_notification_box, .fgt_pword_notification, .signup_notification {
+ 	border:1px solid #D1026C;
+ 	color: #D1026C;
+ 	background-color: #fec0e0;
+ 	margin-bottom:10px;
+ 	display:none;
+}
+
+.signup_btn {
+	border:1px solid #048091;
+	color: #035e6b;
+	background-color: #85edfc;
+	margin-top:10px;
+}
+
+#signup_link {
+	color: #035e6b;
+}
+
+.forgot_password_btn {
+	border:1px solid #61c155;
+	color: #275920;
+	background-color: #b1e0ab;
+	margin-top:20px;
+	padding-top:5px;
+ 	height:25px;
+}
+
+.forgot_password_success, .signup_success {
+	padding-top:35px;
+	height:70px;
+	margin-top:0px;
+}
+
+.signup_success {
+	margin-top:10px;
+}
+
+#forgot_password_link, #signup_success_link {
+	color: #275920;
+}
+
+#forgot_password_success_link, #signup_success_link {
+	color: black;
+}
+
 
 .ui-submit {
 	padding: 0px;

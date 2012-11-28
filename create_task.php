@@ -12,6 +12,14 @@
 
 $('#create_page').live('pageinit',function(event) {
       $("#header_text").text("Create Task");
+    	$(".notifications_link").click(function() {
+			window.location.replace("tasks.php");
+		});
+		$trash_icon = $("#create_page").find('.notifications_link_img');
+		$trash_icon.attr('src', 'images/priorifly_icons/179-notepad.png');
+		$trash_icon.css('margin-top', '-5px');
+		$trash_icon.css('height', '26px');
+      
       
       $("#create_form").submit(function() {
                                
@@ -41,12 +49,6 @@ $('#create_page').live('pageinit',function(event) {
 </script>
 
 	<div data-role="content">	
-		<?php
-			$var = $_SESSION['user_id'];
-			$test = $_SESSION['test'];
-			//echo "<p>TEST: ".$test."</p>";
-			//echo "<p>Session ID: ".$var."</p>";
-		?>
 		<form action="pfTaskSubmit.php" method="post" id="create_form" class="validate">
 			<div data-role="fieldcontain" id="create_title">
     			<label for="title" id="titlelabel">Name</label>

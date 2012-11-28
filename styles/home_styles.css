@@ -2,15 +2,6 @@
     background: transparent;
 }
 
-#home_logo_container {
-	text-align:center;
-}
-
-#home_logo {
-	height:140px;
-	width:250px;
-}
-
 #login_container {
 	text-align:center;
 }
@@ -59,10 +50,10 @@
 	border-radius: 5px;
 	height: 38px;
 	padding: 20px;
-	background-color: #C0C61B;
-	border-bottom:3px solid #9EA416;
+	background-color: #f7e488;
+	border-bottom:3px solid #f0cc1a;
 	margin: 20px auto;
-	color: white;
+	color: black;
 	font-size:30px;
 	font-family: 'Quicksand', sans-serif;
 }
@@ -72,32 +63,30 @@
 	width: 180px;
 	border-radius: 5px;
 	padding: 8px 0;
-	background-color: #1BC0C6;
-	border-bottom:3px solid #0D5C5E;
+	background-color: #85edfc;
+	border-bottom:3px solid #048091;
 	margin: 40px auto 0 auto;
-	color: white;
+	color: #035e6b;
 	font-size:20px;
 	font-family: 'Quicksand', sans-serif;
 }
 
-#about_us_link, #settings_link {
+
+#about_us_link, #contact_link, .hyphen {
+	padding-top:25px;
+	color:white;
 	font-size:25px;
-}
-
-#about_us_link {
-	float:left;
-	position:absolute;
-	top:330px;
-}
-
-#settings_link {
-	position:absolute;
-	top:330px;
-	left:210px;
-}
-
-.small_logo {
+	font-weight:normal;
+	font-family: 'Pacifico', cursive;
 	text-align:center;
+	text-shadow: #F2D43F 0.1em 0.1em 0.9em;
+}
+
+.hyphen {
+	padding:0 15px;
+}
+
+.text_content {
+	font-size:20px;
 	font-family: 'Quicksand', sans-serif;
-	font-size:25px;
 }

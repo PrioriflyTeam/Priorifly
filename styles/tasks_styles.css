@@ -37,7 +37,10 @@
  
  .notifications_link_img {
  	margin-top:-10px;
+ 	margin-left:8px;
  }
+ 
+ 
 /*
  * ---------------------------------------------------------------------------------------
  * HEADER STYLES
@@ -51,22 +54,22 @@
 	background-image: -webkit-linear-gradient(bottom, #048091 48%, #05a2b7 74%);
 	background-image: -ms-linear-gradient(bottom, #048091 48%, #05a2b7 74%);*/
 	background-image: none;
-	background-color: #26B7FF;
-	border-bottom: 4px solid #023d45;
+	background-color: #245A96;
+	border-bottom: 4px solid #1A416D;
 	height:38px;
 }
 
-#home_link, #notifications_link {
+.home_link, .notifications_link {
 	position:absolute;
 	top:5px;
 }
 
-#home_link {
+.home_link {
 	float:left;
 	left:25px;
 }
 
-#notifications_link {
+.notifications_link {
 	float:right;
 	top:11px;
 	left:270px;
@@ -83,11 +86,11 @@
 }
 
 .btn_name {
-	font-family: 'Quicksand', sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
 	font-weight:normal;
 	text-shadow:none;
 	color:black;
-	font-size:16px;
+	font-size:20px;
 }
 
 #prioritize_btn, #sort_btn, #reorder_btn {
@@ -95,8 +98,8 @@
 	text-align:center;
 	width:80px;
 	padding:15px 0;
-	background-color: #D1026C;
-	border-bottom: 4px solid #9e0252;
+	background-color: #ff264a;
+	border-bottom: 4px solid #d90024;
 	position:absolute;
 	top:60px;
 }
@@ -153,6 +156,20 @@
 	color:white;
 }
 
+.deadline {
+	font-size:13px;
+	color: #1a3c16;
+	list-style:none;
+	display:inline-block;
+	margin:0px;
+	padding:0px;
+}
+
+.rank {
+	color: #1a3c16;
+}
+
+
 /*
  * ---------------------------------------------------------------------------------------
  * TASK STYLES (buttons above tasks section)
@@ -168,7 +185,7 @@
 
 .arrow, .wrench, .heart, .trash_heart {
 	margin-top: -25px;
-	left: 290px;
+	left: 285px;
 	position: absolute;
 }
 
@@ -182,8 +199,8 @@
 }
 
 .trash_heart {
-	margin-top:10px;
-	left:285px;
+	margin-top:-20px;
+	left:278px;
 }
 
 .task_name {
@@ -201,7 +218,6 @@
 	margin-top:3px;
 	font-size:20px;
 	border-top:1px solid black;
-	border-bottom:1px solid black;
 	padding:15px 0px;
 	font-family: 'Quicksand', sans-serif;
 	min-height:25px;
@@ -232,6 +248,23 @@
 	padding:40px 20px;
 }
 
+.progress_update_message {
+	background-color: #26B7FF;
+	color: white;
+	text-align: center;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 16px;
+	float: left;
+	position: absolute;
+	width: 251px;
+	left: 25px;
+	margin-top: 5px;
+	height: 48px;
+	z-index: 5;
+	border-radius:4px;
+	display:none;
+}
+
 
 /*
  * ---------------------------------------------------------------------------------------
@@ -244,14 +277,8 @@ a {
 }
 
 .active_link {
-	background-color: #26B7FF;
-	border-top: 4px solid #05a2b7;
-	/*background-image: linear-gradient(bottom, #048091 48%, #05a2b7 74%);
-	background-image: -o-linear-gradient(bottom, #048091 48%, #05a2b7 74%);
-	background-image: -moz-linear-gradient(bottom, #048091 48%, #05a2b7 74%);
-	background-image: -webkit-linear-gradient(bottom, #048091 48%, #05a2b7 74%);
-	background-image: -ms-linear-gradient(bottom, #048091 48%, #05a2b7 74%);*/
-	/*border-bottom: 8px solid #ae0e20;*/
+	background-color: #245A96;
+	border-top: 4px solid #377fcf;
 }
 
 #footer {
@@ -259,7 +286,7 @@ a {
 }
 
 #tasks_reminders_container {
-	height:45px;
+	height:50px;
 }
 
 #tasks_link {
@@ -271,10 +298,10 @@ a {
 }
 
 .create_task_text {
-	background-color: #492D61;
-	/*border-bottom:3px solid #21142b;*/
+	background-color: #f4d958;
+	border-bottom:3px solid #d4b20e;
 	border-radius:4px;
-	color:white;
+	color:black;
 	font-size:25px;
 	text-decoration:none;
 	font-weight:normal;
@@ -285,7 +312,7 @@ a {
 	padding:0px 20px;
 	position:absolute;
 	left:28%;
-	top:1px;
+	top:3px;
 }
 
 /*
