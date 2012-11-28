@@ -10,21 +10,7 @@
     
 <script type="text/javascript">
 
-$('#cancelpage').live('pageinit', function(event) {
-                      $("#cancelpage").css({ opacity: 1 });
-                      });
-
 $('#create_page').live('pageinit',function(event) {
-                       $(function() {
-                         $('div[data-role="dialog"]').live('pagebeforeshow', function(e, ui) {
-                                                           ui.prevPage.addClass("ui-dialog-background ");
-                                                           });
-                         
-                         $('div[data-role="dialog"]').live('pagehide', function(e, ui) {
-                                                           $(".ui-dialog-background ").removeClass("ui-dialog-background ");
-                                                           });
-                         });
-                       
       $("#header_text").text("Create Task");
     	$(".notifications_link").click(function() {
 			window.location.replace("tasks.php");
@@ -33,7 +19,8 @@ $('#create_page').live('pageinit',function(event) {
 		$trash_icon.attr('src', 'images/priorifly_icons/179-notepad.png');
 		$trash_icon.css('margin-top', '-5px');
 		$trash_icon.css('height', '26px');
-    
+      
+      
       $("#create_form").submit(function() {
                                
         	// get a collection of all empty fields
@@ -42,7 +29,7 @@ $('#create_page').live('pageinit',function(event) {
         		// $.trim to prevent whitespace-only values being counted as 'filled'
         		return !$.trim(this.value).length;
        		});
-                               
+        
 	        // if there are one or more empty fields
 	        if(emptyFields.length) {
 	        
@@ -77,22 +64,19 @@ $('#create_page').live('pageinit',function(event) {
             </div>
 			<div data-role="fieldcontain">
 				<label for="rank" id="ranklabel">Rank</label>
-				<input type="range" name="rank" id="rank" class="required" value="5" min="1" max="10" data-highlight="true" />
-                <span class="slider_left">1</span>
+				<input type="range" name="rank" id="rank" class="required" value="5" min="0" max="10" data-highlight="true" />
+                <span class="slider_left">0</span>
                 <span class="slider_right">10</span>
 			</div>
             <div data-role="fieldcontain">
                 <label for="progress" id="progresslabel">Progress</label>
                 <input type="range" name="progress" id="progress" class="required"value="0" min="0" max="100" data-highlight="true" />
-                <span class="slider_left">0%</span>
-                <span class="slider_right">100%</span>
+                <span class="slider_left">0</span>
+                <span class="slider_right">100</span>
             </div>
             <div data-role="fieldcontain">
-                <label for="number" id="timelabel">Time Estimate</label>
+                <label for="number" id="timelabel">Time Estimate in Hours</label>
                 <table>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>
                 <input type="number" name="hours" class="required" id="number"></td>
                 <td>
@@ -110,12 +94,17 @@ $('#create_page').live('pageinit',function(event) {
 
 </div>
 
-<div data-role="page" id="cancelpage" data-overlay-theme="c" data-title="cancel?">
-    <div id="#cancel_msg" class="cancelmsg">Are you sure you want to leave this page? Any changes you have made to this page will not be saved.</div>
+<div data-role="page" id="cancelpage" data-title="Are you sure you want to cancel?">
+    <div data-role="header" class="home_header">
+        <h1>Cancel</h1>
+    </div><!-- /header -->
+    <h3>Are you sure you want to leave this page? Any changes you have made to this page will not be saved.</h3>
     <div data-role="content">
         <a href="tasks.php" data-role="button">Leave</a>
         <a href="#create_page" data-role="button">Stay on this page</a>
-    </div>
+
+	<div data-role="footer" data-id="samebar" class="nav-glyphish-example" data-position="fixed" data-tap-toggle="false">
+	</div>
 </div>
 <?php
 	include 'bottom_boilerplate.html';

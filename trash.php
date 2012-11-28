@@ -17,7 +17,7 @@
 			$hours_left = $task1['Deadline'] - $Current_Date;
 			$taskID = $task1['Task_ID'];
 			if($task1['Progress'] == 100 || $hours_left < 0) {
-				$query2 = sprintf("Select * From Tasks Where UserID = '$User_ID' and Status = 1");
+				$query2 = sprintf("Select * From Tasks Where User_ID = '$User_ID' and Status = 1");
     			$result2 = mysql_query($query2);
     			while ($task2 = mysql_fetch_assoc($result2)) {
         			$taskID2 = $task2['Task_ID'];

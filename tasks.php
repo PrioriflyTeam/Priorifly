@@ -36,7 +36,16 @@
 	?>
 	
 	<script type="text/javascript">		
+		function update() {
+			$.ajax({
+   				url: 'update.php',
+   				type: 'POST',
+   				success: function (response) {}
+			});
+		}
+	
 		$('.tasks_page').live('pageinit',function(event, ui){
+			update();
 			$('body').css('background-image', 'none');
 			$('body').css('background-color', 'white');
 			$(".create_task_text").click(function(e) {

@@ -71,24 +71,22 @@
 	font-family: 'Quicksand', sans-serif;
 }
 
-#about_us_link, #settings_link {
+
+#about_us_link, #contact_link, .hyphen {
+	padding-top:25px;
+	color:white;
 	font-size:25px;
-}
-
-#about_us_link {
-	float:left;
-	position:absolute;
-	top:330px;
-}
-
-#settings_link {
-	position:absolute;
-	top:330px;
-	left:210px;
-}
-
-.small_logo {
+	font-weight:normal;
+	font-family: 'Pacifico', cursive;
 	text-align:center;
+	text-shadow: #F2D43F 0.1em 0.1em 0.9em;
+}
+
+.hyphen {
+	padding:0 15px;
+}
+
+.text_content {
+	font-size:20px;
 	font-family: 'Quicksand', sans-serif;
-	font-size:25px;
 }
