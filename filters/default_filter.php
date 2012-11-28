@@ -41,7 +41,7 @@
 					//"<form action='pfEditTask.php' method='post'>".
 						"<input type='hidden' name='id' value='$task_id'>".
 						"<input type='range' name='progress' id='progress' value='$progress'min='0' max='100' data-highlight='true' />".
-						"<div class='progress_update_message'>Your progress has been updated!</div>'".
+						"<div class='progress_update_message'>Your progress has been updated!</div>".
 						"<input class='submit' type='submit' value='Update My Progress'>".
 					//"</form>".
 			"</div>".
